@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
 import PromptsCard from './components/PromptsCard';
@@ -8,46 +8,63 @@ import Navbar from './components/Navbar';
 
 // Placeholder components for each page
 const Home = () => (
-  <div className="min-h-[80vh] flex flex-col items-center justify-center bg-gradient-to-br from-purple-900 via-purple-700 to-purple-500 relative overflow-hidden">
-    {/* Hero Section */}
-    <div className="w-full max-w-4xl text-center mt-16 mb-8 z-10">
-      <h1 className="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4">One foundation.<br />Total control.</h1>
-      <p className="text-lg md:text-xl text-purple-100 mb-8">An all-in-one setup for creative brand automation, built to grow with your business. Everything you need, under one roof, with one trusted partner.</p>
+  <div className="min-h-screen w-full flex flex-col items-center justify-start bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 py-16 px-6 font-sans">
+    <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 z-10">
+      {/* Brand Generator Card */}
+      <FeatureCard
+        title="Brand Generator"
+        description="AI-powered initial brand concept generation, tailored to your business."
+        to="/brand-generator"
+        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>}
+      />
+      {/* Playground Card */}
+      <FeatureCard
+        title="Brand Playground"
+        description="Experiment, iterate, and manually edit your brand assets in a safe sandbox."
+        to="/playground"
+        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h8" /></svg>}
+      />
+      {/* Assets Library Card */}
+      <FeatureCard
+        title="Assets Library"
+        description="Access, download, and manage all your brand assets in one place."
+        to="/assets"
+        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="7" width="18" height="13" rx="2" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 3v4M8 3v4" /></svg>}
+      />
+      {/* Style Guide Card */}
+      <FeatureCard
+        title="Style Guide"
+        description="Comprehensive brand guidelines, color palettes, typography, and more."
+        to="/style-guide"
+        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>}
+      />
+      {/* Upload Card */}
+      <FeatureCard
+        title="Upload Inspiration"
+        description="Upload images, sketches, or wireframes to inspire your brand generation."
+        to="#"
+        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5-5m0 0l5 5m-5-5v12" /></svg>}
+        upload
+      />
     </div>
-    {/* Project Start Card */}
-    <div className="w-full max-w-md bg-card rounded-2xl shadow-2xl p-8 flex flex-col gap-4 z-10">
-      <h2 className="text-2xl font-bold text-primary mb-2">Start Your Project</h2>
-      <input className="rounded-lg border border-purple-200 px-4 py-2 mb-2 bg-white/80" placeholder="Name*" />
-      <input className="rounded-lg border border-purple-200 px-4 py-2 mb-2 bg-white/80" placeholder="Company Email*" />
-      <input className="rounded-lg border border-purple-200 px-4 py-2 mb-2 bg-white/80" placeholder="Phone number*" />
-      <textarea className="rounded-lg border border-purple-200 px-4 py-2 mb-2 bg-white/80" placeholder="I'd like to talk about..." rows={2} />
-      <button className="bg-primary text-white font-semibold py-2 rounded-lg hover:bg-primary-dark transition">Request Your Consultation</button>
-    </div>
-    {/* Quick Actions */}
-    <div className="w-full max-w-4xl flex flex-wrap justify-center gap-4 mt-12 z-10">
-      <div className="bg-card rounded-xl p-6 flex flex-col items-center w-64 shadow-lg">
-        <span className="text-primary font-bold text-lg mb-2">Full Brand Journey</span>
-        <button className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-dark transition">Start Now</button>
-      </div>
-      <div className="bg-card rounded-xl p-6 flex flex-col items-center w-64 shadow-lg">
-        <span className="text-primary font-bold text-lg mb-2">Just Need a Logo?</span>
-        <button className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-dark transition">Logo Tool</button>
-      </div>
-      <div className="bg-card rounded-xl p-6 flex flex-col items-center w-64 shadow-lg">
-        <span className="text-primary font-bold text-lg mb-2">Only a Color Palette?</span>
-        <button className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-dark transition">Palette Tool</button>
-      </div>
-    </div>
-    {/* Upload Section */}
-    <div className="w-full max-w-2xl bg-card rounded-xl p-6 mt-12 flex flex-col items-center shadow-lg z-10">
-      <span className="text-primary font-bold text-lg mb-2">Upload Images or Wireframes</span>
-      <input type="file" className="mb-2" multiple />
-      <p className="text-sm text-gray-700">Upload images, sketches, or wireframes to inspire your brand generation.</p>
-    </div>
-    {/* Background Accent */}
-    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-900/80 via-purple-700/60 to-purple-500/40 pointer-events-none z-0" />
   </div>
 );
+
+// FeatureCard component for dashboard grid
+function FeatureCard({ title, description, to, icon, upload }: any) {
+  return (
+    <div className="bg-card rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center gap-4 transition transform hover:-translate-y-1 hover:shadow-2xl border border-purple-200 group">
+      <div className="mb-2">{icon}</div>
+      <h3 className="text-xl font-bold text-primary group-hover:text-primary-dark transition">{title}</h3>
+      <p className="text-gray-700 text-center mb-4">{description}</p>
+      {upload ? (
+        <input type="file" className="w-full text-sm" multiple />
+      ) : (
+        <NavLink to={to} className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-dark transition text-sm">Open</NavLink>
+      )}
+    </div>
+  );
+}
 
 const Dashboard = () => <div className="p-8 bg-card min-h-[80vh]">User Dashboard</div>;
 const BrandGenerator = () => <div className="p-8 bg-card min-h-[80vh]">Brand DNA Generator</div>;
