@@ -5,6 +5,8 @@ import PromptsCard from './components/PromptsCard';
 import ProgressBar from './components/ProgressBar';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import BrandDNAGenerator from './components/BrandDNAGenerator';
+import BrandPlayground from './components/BrandPlayground';
 
 // Placeholder components for each page
 const Home = () => (
@@ -102,41 +104,8 @@ function FeatureCard({ title, description, to, icon, upload }: FeatureCardProps)
 }
 
 const Dashboard = () => <div className="p-8 bg-card min-h-[80vh]">User Dashboard</div>;
-const BrandGenerator = () => <div className="p-8 bg-card min-h-[80vh]">Brand DNA Generator</div>;
-const Playground = () => (
-  <div className="min-h-[80vh] flex flex-col items-center justify-center bg-[#1a1033] relative overflow-hidden">
-    <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-8 mt-16 flex flex-col gap-6 z-10">
-      <h2 className="text-3xl font-bold text-[#1a1033] mb-4">Brand Playground</h2>
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Controls */}
-        <div className="flex-1 flex flex-col gap-4">
-          <label className="font-semibold text-[#1a1033]">Logo Style</label>
-          <select className="rounded-lg border border-gray-200 px-4 py-2 bg-white">
-            <option>Minimalist</option>
-            <option>Bold</option>
-            <option>Playful</option>
-            <option>Elegant</option>
-          </select>
-          <label className="font-semibold text-[#1a1033]">Primary Color</label>
-          <input type="color" className="w-16 h-10 rounded-lg border border-gray-200" />
-          <label className="font-semibold text-[#1a1033]">Typography</label>
-          <select className="rounded-lg border border-gray-200 px-4 py-2 bg-white">
-            <option>Sans-serif</option>
-            <option>Serif</option>
-            <option>Monospace</option>
-          </select>
-        </div>
-        {/* Preview */}
-        <div className="flex-1 flex flex-col items-center justify-center">
-          <div className="w-48 h-48 bg-[#1a1033] rounded-xl flex items-center justify-center shadow-lg">
-            <span className="text-4xl font-extrabold text-white drop-shadow">Logo</span>
-          </div>
-          <span className="mt-4 text-[#1a1033] font-semibold">Live Preview</span>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+const BrandGenerator = () => <BrandDNAGenerator />;
+const Playground = () => <BrandPlayground />;
 const Assets = () => <div className="p-8 bg-card min-h-[80vh]">Brand Assets Library</div>;
 const StyleGuide = () => <div className="p-8 bg-card min-h-[80vh]">Brand Style Guide</div>;
 const Login = () => <div className="p-8 bg-card min-h-[80vh]">Login</div>;

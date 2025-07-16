@@ -12,6 +12,7 @@ export default function Navbar({ isSidebarCollapsed }: NavbarProps) {
         <span className="text-white text-2xl md:text-3xl font-extrabold md:hidden">1</span>
         <span className="text-white/90 text-xl md:text-2xl font-bold md:hidden">base</span>
       </div>
+
       {/* User Actions */}
       <div className="flex items-center gap-4 md:gap-8">
         <button className="px-4 md:px-6 py-1.5 md:py-2 text-white/90 hover:text-white font-semibold transition rounded-lg hover:bg-white/10">
