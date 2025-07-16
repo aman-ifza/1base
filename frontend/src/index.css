@@ -1,5 +1,30 @@
 
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom color scheme for 1base: dark/medium purple and white */
+body {
+  @apply bg-gradient-to-br from-purple-900 via-purple-700 to-white text-gray-900 min-h-screen;
+}
+
+/* Optional: override default card and component backgrounds for contrast */
+.bg-card {
+  @apply bg-white/90 backdrop-blur-md shadow-lg;
+}
+
+.text-primary {
+  @apply text-purple-700;
+}
+
+.bg-primary {
+  @apply bg-purple-700;
+}
+
+.bg-primary-dark {
+  @apply bg-purple-900;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
