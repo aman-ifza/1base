@@ -4,14 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom color scheme for 1base: dark/medium purple and white */
+/* Custom color scheme for 1base: dark purple and white */
 body {
-  @apply bg-gradient-to-br from-purple-900 via-purple-700 to-white text-gray-900 min-h-screen;
+  @apply bg-[#1a1033] text-gray-900 min-h-screen;
 }
 
-/* Optional: override default card and component backgrounds for contrast */
+/* Card and component backgrounds */
 .bg-card {
-  @apply bg-white/90 backdrop-blur-md shadow-lg;
+  @apply bg-white shadow-lg;
 }
 
 .text-primary {
@@ -19,11 +19,11 @@ body {
 }
 
 .bg-primary {
-  @apply bg-purple-700;
+  @apply bg-[#1a1033];
 }
 
 .bg-primary-dark {
-  @apply bg-purple-900;
+  @apply bg-[#140d29];
 }
 
 :root {
