@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Main from "../components/Main";
+import Body from "../components/Body";
 import Footer from "../components/Footer";
 
 const LandingPage = () => {
@@ -8,7 +8,7 @@ const LandingPage = () => {
         <div className="bg-gray-100 min-h-screen">
         <Navbar />
         <Hero />
-        <Main />
+        <Body />
         <Footer />
         </div>
     );

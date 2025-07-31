@@ -9,7 +9,7 @@ import inspiration from '../assets/inspiration.png';
 import api from '../assets/api.png';
 
 // Main Section Component with dark background
-const Main = () => {
+const Body = () => {
   const cardData = [
     {
       type: 'right',
@@ -96,4 +96,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Body;

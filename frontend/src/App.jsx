@@ -1,15 +1,17 @@
-import { useState } from 'react'
 
-import './App.css'
-import LandingPage from './Pages/LandingPage'
+import './App.css';
+import "./gradient-bg.css";
+import SidebarContainer from './components/SidebarContainer';
+import Body from './components/Body';
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-   <LandingPage/>
-    </>
+    <div >     
+      <SidebarContainer />
+     
+    </div>
   )
+
 }
 
 export default App

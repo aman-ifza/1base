@@ -68,3 +68,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+body {
+  background: 
+    linear-gradient(to bottom right, #2B1B99 12%, #0E0933 50%) bottom right / 50% 50% no-repeat,
+    linear-gradient(to bottom left, #2B1B99 12%, #0E0933 50%) bottom left / 50% 50% no-repeat,
+    linear-gradient(to top left, #2B1B99 12%, #0E0933 50%) top left / 50% 50% no-repeat,
+    linear-gradient(to top right, #2B1B99 12%, #0E0933 50%) top right / 50% 50% no-repeat;
+  min-height: 100vh;
+  background-color: #0E0933; /* Fallback for gaps */
+  color: white;
+}
