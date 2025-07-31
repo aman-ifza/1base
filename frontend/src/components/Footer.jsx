@@ -42,7 +42,7 @@ const Footer = () => {
               <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 FREQUENTLY ASKED QUESTIONS
               </p>
-              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
+              <h2 className="text-4xl font-bold leading-tight">
                 What you need to know. Clear answers for smart decisions.
               </h2>
             </div>

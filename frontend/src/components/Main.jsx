@@ -1,58 +1,57 @@
 import React from 'react';
-
-// Individual Card Component - This is what you can replicate multiple times
-const BrandSetupCard = ({ 
-  title = "FAST TRACK YOUR BRAND SETUP",
-  description = "Define your brand's identity with tailored tools to align visuals, tone, and mission all in one place.",
-  buttonText = "GET STARTED",
-  onButtonClick = () => {}
-}) => {
-  return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-xl max-w-6xl mx-auto min-h-[400px]">
-      <div className="flex flex-col lg:flex-row">
-        {/* Left side - Content */}
-        <div className="lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center min-h-[400px]">
-          <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 leading-tight">
-            {title}
-          </h3>
-          <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-            {description}
-          </p>
-          <button 
-            onClick={onButtonClick}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 self-start"
-          >
-            {buttonText} →
-          </button>
-        </div>
-        
-        {/* Right side - Image placeholder */}
-        <div className="lg:w-1/2 bg-gray-200 flex items-center justify-center min-h-[400px]">
-          <p className="text-gray-600 text-lg font-medium">Image to be inserted here</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+import BrandSetupCard from './BrandSetupCard';
+import BrandSetupCardImageLeft from './BrandSetupCardImageLeft';
+import Build from '../assets/Build.jpg';
+import typography from '../assets/typography.png';
+import canvas from '../assets/canvas.png';
+import Logo from '../assets/Logo.png';
+import inspiration from '../assets/inspiration.png';
+import api from '../assets/api.png';
 
 // Main Section Component with dark background
 const Main = () => {
-  // Sample data for multiple cards - you can modify this
   const cardData = [
     {
-      title: "FAST TRACK YOUR BRAND SETUP",
-      description: "Define your brand's identity with tailored tools to align visuals, tone, and mission all in one place.",
-      buttonText: "GET STARTED"
+      type: 'right',
+      title: "CUSTOMER ENGAGEMENT",
+      description: "Build stronger relationships with your customers through personalized engagement tools. Create meaningful interactions that drive loyalty and business growth.",
+      buttonText: "ENGAGE CUSTOMERS",
+      image: Build
     },
     {
-      title: "STREAMLINE YOUR WORKFLOW",
-      description: "Optimize your creative process with automated tools that save time and enhance productivity.",
-      buttonText: "LEARN MORE"
+      type: 'left',
+      title: "BRAND IDENTITY CREATION",
+      description: "Create a distinctive brand identity that sets you apart from competitors. Our tools help you develop a unique voice and visual style that resonates with your target audience.",
+      buttonText: "EXPLORE BRANDING",
+      image: typography
     },
     {
-      title: "SCALE YOUR BUSINESS",
-      description: "Grow your brand with enterprise-level solutions designed for expanding businesses.",
-      buttonText: "EXPLORE"
+      type: 'right',
+      title: "MARKETING AUTOMATION",
+      description: "Streamline your marketing efforts with powerful automation tools. Schedule posts, analyze performance, and engage with your audience across multiple platforms effortlessly.",
+      buttonText: "START AUTOMATING",
+      image: canvas
+    },
+    {
+      type: 'left',
+      title: "CONTENT STRATEGY",
+      description: "Develop compelling content strategies that drive engagement. Our AI-powered tools help you create and optimize content that connects with your audience and drives results.",
+      buttonText: "CREATE STRATEGY",
+      image: Logo
+    },
+    {
+      type: 'right',
+      title: "ANALYTICS DASHBOARD",
+      description: "Get deep insights into your brand's performance with our comprehensive analytics dashboard. Track metrics, monitor growth, and make data-driven decisions.",
+      buttonText: "VIEW ANALYTICS",
+      image: inspiration
+    },
+    {
+      type: 'left',
+      title: "COLLABORATION TOOLS",
+      description: "Enable seamless teamwork with our suite of collaboration tools. Share assets, manage workflows, and maintain brand consistency across your entire organization.",
+      buttonText: "COLLABORATE NOW",
+      image: api
     }
   ];
 
@@ -72,13 +71,25 @@ const Main = () => {
       {/* Cards Container */}
       <div className="space-y-12 max-w-6xl mx-auto">
         {cardData.map((card, index) => (
-          <BrandSetupCard
-            key={index}
-            title={card.title}
-            description={card.description}
-            buttonText={card.buttonText}
-            onButtonClick={() => console.log(`Card ${index + 1} clicked`)}
-          />
+          card.type === 'right' ? (
+            <BrandSetupCard
+              key={index}
+              title={card.title}
+              description={card.description}
+              buttonText={card.buttonText}
+              image={card.image}
+              onButtonClick={() => console.log(`Card ${index + 1} clicked`)}
+            />
+          ) : (
+            <BrandSetupCardImageLeft
+              key={index}
+              title={card.title}
+              description={card.description}
+              buttonText={card.buttonText}
+              image={card.image}
+              onButtonClick={() => console.log(`Card ${index + 1} clicked`)}
+            />
+          )
         ))}
       </div>
     </section>

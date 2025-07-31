@@ -1,3 +1,5 @@
+import hero from "../assets/hero.jpg"; // Adjust the path as necessary
+
 const Hero = () => {
   return (
    <section className="w-full bg-gradient-to-b from-[#2710D9] to-[#1A1448] px-6 py-20">
@@ -23,9 +25,10 @@ const Hero = () => {
         </div>
         
         {/* Optional: Placeholder for right-side image */}
-        {/* <div className="hidden md:block">
-          <img src="/your-image.png" alt="hero" className="max-w-md" />
-        </div> */}
+
+         <div className="hidden md:block">
+          <img src={hero} alt="hero" className="max-w-md" />
+        </div> 
       </div>
     </section>
   );
