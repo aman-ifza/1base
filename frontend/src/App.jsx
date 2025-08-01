@@ -17,14 +17,13 @@ import TemplateComponent from './components/TemplateComponent';
 import TemplatePreview from './components/TemplatePreview';
 import Chatbox from './components/Chatbox';
 import NameMiniSidebar from './components/NameMiniSidebar';
+import NameRightMiniSidebar from './components/NameRightMiniSidebar';
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#0F0B2C] to-[#0F0B2C]">     
+    <div className="relative min-h-screen">     
       <NameMiniSidebar />
-      <div className="flex-1 p-6">
-        {/* Your main content goes here */}
-      </div>
+      <NameRightMiniSidebar />
     </div>
   )
 }
