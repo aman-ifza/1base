@@ -8,13 +8,13 @@ import LandingPage from './Pages/LandingPage';
 import TemplateSettings from './components/TemplateSettings';
 import DesignEditingSidebar from './components/DesignEditingSidebar';
 import DesignCanvas from './components/DesignCanvas';
+import Brand from './components/Brand';
 
 
 function App() {
   return (
     <div >     
     
-<DesignCanvas />
 
      
     </div>
