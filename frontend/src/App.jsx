@@ -1,7 +1,7 @@
 
 import './App.css';
 import "./gradient-bg.css";
-import SidebarContainer from './components/SidebarContainer';
+import Sidebar from './components/Sidebar';
 import RightMiniSidebar from './components/RightMiniSidebar';
 import PromptBar from './components/PromptBar';
 import LandingPage from './Pages/LandingPage';
@@ -17,11 +17,12 @@ import TemplateComponent from './components/TemplateComponent';
 import TemplatePreview from './components/TemplatePreview';
 
 function App() {
- 
-
   return (
-    <div >     
-<TemplatePreview/>
+    <div className="flex h-screen bg-gradient-to-b from-[#0F0B2C] to-[#0F0B2C]">     
+      <Sidebar />
+      <div className="flex-1 p-6">
+        {/* Your main content goes here */}
+      </div>
     </div>
   )
 }
