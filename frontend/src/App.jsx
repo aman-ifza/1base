@@ -13,24 +13,15 @@ import DrawCompare from './components/DrawCompare';
 import InputOutputToggle from './components/InputOutput';
 import DrawingMiniSidebar from './components/DrawingMiniSidebar';
 import LogoCard from './components/LogoCard';
-
+import TemplateComponent from './components/TemplateComponent';
+import TemplatePreview from './components/TemplatePreview';
 
 function App() {
-  const handleEditLogo = () => {
-    console.log('Edit logo clicked');
-  };
-
-  const handleExportLogo = () => {
-    console.log('Export logo clicked');
-  };
+ 
 
   return (
-    <div className="flex items-center justify-center min-h-screen">     
-      <LogoCard
-        imageUrl=""
-        onEdit={handleEditLogo}
-        onExport={handleExportLogo}
-      />
+    <div >     
+<TemplatePreview/>
     </div>
   )
 }
