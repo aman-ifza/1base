@@ -18,12 +18,12 @@ import TemplatePreview from './components/TemplatePreview';
 import Chatbox from './components/Chatbox';
 import NameMiniSidebar from './components/NameMiniSidebar';
 import NameRightMiniSidebar from './components/NameRightMiniSidebar';
+import GuidePage from './Pages/GuidePage';
 
 function App() {
   return (
-    <div className="relative min-h-screen">     
-      <NameMiniSidebar />
-      <NameRightMiniSidebar />
+    <div>     
+    <GuidePage/>
     </div>
   )
 }

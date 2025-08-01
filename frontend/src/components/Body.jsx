@@ -31,28 +31,8 @@ const Body = () => {
       description: "Streamline your marketing efforts with powerful automation tools. Schedule posts, analyze performance, and engage with your audience across multiple platforms effortlessly.",
       buttonText: "START AUTOMATING",
       image: canvas
-    },
-    {
-      type: 'left',
-      title: "CONTENT STRATEGY",
-      description: "Develop compelling content strategies that drive engagement. Our AI-powered tools help you create and optimize content that connects with your audience and drives results.",
-      buttonText: "CREATE STRATEGY",
-      image: Logo
-    },
-    {
-      type: 'right',
-      title: "ANALYTICS DASHBOARD",
-      description: "Get deep insights into your brand's performance with our comprehensive analytics dashboard. Track metrics, monitor growth, and make data-driven decisions.",
-      buttonText: "VIEW ANALYTICS",
-      image: inspiration
-    },
-    {
-      type: 'left',
-      title: "COLLABORATION TOOLS",
-      description: "Enable seamless teamwork with our suite of collaboration tools. Share assets, manage workflows, and maintain brand consistency across your entire organization.",
-      buttonText: "COLLABORATE NOW",
-      image: api
     }
+
   ];
 
   return (
