@@ -9,13 +9,14 @@ import TemplateSettings from './components/TemplateSettings';
 import DesignEditingSidebar from './components/DesignEditingSidebar';
 import DesignCanvas from './components/DesignCanvas';
 import Brand from './components/Brand';
+import DrawCompare from './components/DrawCompare';
 
 
 function App() {
   return (
     <div >     
     
-
+<DrawCompare />
      
     </div>
   )
