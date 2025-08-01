@@ -16,12 +16,15 @@ import LogoCard from './components/LogoCard';
 import TemplateComponent from './components/TemplateComponent';
 import TemplatePreview from './components/TemplatePreview';
 import Chatbox from './components/Chatbox';
+import NameMiniSidebar from './components/NameMiniSidebar';
 
 function App() {
   return (
-    <div >     
- 
-
+    <div className="relative min-h-screen bg-gradient-to-b from-[#0F0B2C] to-[#0F0B2C]">     
+      <NameMiniSidebar />
+      <div className="flex-1 p-6">
+        {/* Your main content goes here */}
+      </div>
     </div>
   )
 }
