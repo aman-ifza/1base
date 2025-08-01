@@ -10,13 +10,14 @@ import DesignEditingSidebar from './components/DesignEditingSidebar';
 import DesignCanvas from './components/DesignCanvas';
 import Brand from './components/Brand';
 import DrawCompare from './components/DrawCompare';
+import InputOutputToggle from './components/InputOutput';
 
 
 function App() {
   return (
     <div >     
     
-<DrawCompare />
+<InputOutputToggle/>
      
     </div>
   )
