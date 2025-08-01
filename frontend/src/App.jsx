@@ -5,14 +5,14 @@ import SidebarContainer from './components/SidebarContainer';
 import RightMiniSidebar from './components/RightMiniSidebar';
 import PromptBar from './components/PromptBar';
 import LandingPage from './Pages/LandingPage';
+import TemplateSettings from './components/TemplateSettings';
+import DesignEditingSidebar from './components/DesignEditingSidebar';
 
 
 function App() {
   return (
     <div >     
-      <SidebarContainer />
-      <RightMiniSidebar /> 
-      <PromptBar/> 
+    
 
 
      
