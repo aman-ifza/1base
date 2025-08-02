@@ -6,10 +6,10 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between">
         <div className="text-white max-w-xl space-y-6 md:text-left text-center">
           <h1 className="text-3xl md:text-4xl font-semibold">
-            Learn How to Master Your Brand
+            One Foundation, Total Control
           </h1>
           <p className="text-sm md:text-base text-gray-200 leading-relaxed">
-            Welcome to your go-to resource for mastering brand creation with our platform. Whether you're starting fresh or refining your identity, our essential articles cover everything from logo design and typography to layout creation and brand inspiration. Designed for all skill levels, these clear, practical guides help you understand each tool, apply branding best practices, and build consistently — all while working on real projects.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
 
           <div className="pt-2">

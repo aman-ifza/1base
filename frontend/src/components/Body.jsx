@@ -31,8 +31,28 @@ const Body = () => {
       description: "Streamline your marketing efforts with powerful automation tools. Schedule posts, analyze performance, and engage with your audience across multiple platforms effortlessly.",
       buttonText: "START AUTOMATING",
       image: canvas
+    },
+    {
+      type: 'left',
+      title: "LOGO DESIGN",
+      description: "Create stunning, professional logos that capture your brand's essence. Our AI-powered design tools help you craft memorable visual identities that make lasting impressions.",
+      buttonText: "DESIGN LOGOS",
+      image: Logo
+    },
+    {
+      type: 'right',
+      title: "CREATIVE INSPIRATION",
+      description: "Discover endless design possibilities with our curated inspiration gallery. Explore trending styles, color palettes, and layouts to spark your creative vision.",
+      buttonText: "GET INSPIRED",
+      image: inspiration
+    },
+    {
+      type: 'left',
+      title: "API INTEGRATION",
+      description: "Seamlessly integrate our powerful branding tools into your applications. Access our comprehensive API to build custom solutions and automate your design workflow.",
+      buttonText: "EXPLORE API",
+      image: api
     }
-
   ];
 
   return (

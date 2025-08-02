@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div>     
-<ApiDocs />
+<LandingPage />
     </div>
   )
 }
