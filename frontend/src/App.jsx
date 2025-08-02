@@ -27,12 +27,13 @@ import MyBrands from './Pages/MyBrands';
 import Name from './Pages/Name';
 import LogoEditor from './Pages/LogoEditor';
 import GuidePage from './Pages/GuidePage';
+import Logo from './Pages/Logo';
 
 function App() {
 
   return (
     <div>     
-      <LogoEditor />
+      <Logo />
     </div>
   )
 }
