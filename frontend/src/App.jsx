@@ -30,12 +30,13 @@ import GuidePage from './Pages/GuidePage';
 import Logo from './Pages/Logo';
 import Inspiration from './Pages/Inspiration';
 import Canvas from './Pages/Canvas';
+import ApiDocs from './Pages/ApiDocs';
 
 function App() {
 
   return (
     <div>     
-<Canvas />
+<ApiDocs />
     </div>
   )
 }
