@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Copy, FileText, Share2, ThumbsUp, ThumbsDown, Bookmark } from 'lucide-react';
 
 const Chatbox = () => {
@@ -6,9 +6,11 @@ const Chatbox = () => {
   const [isDisliked, setIsDisliked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
   // Sample placeholder content - this would be replaced with actual AI response
-  const aiResponse = `Here are 10 creative and dynamic name ideas for your electronics-focused eCommerce application (each no more than 3 words):
+  const fullAiResponse = `Here are 10 creative and dynamic name ideas for your electronics-focused eCommerce application (each no more than 3 words):
 
 1. VoltCart
 2. CircuitBay
@@ -45,9 +47,31 @@ const Chatbox = () => {
 
 Let me know if you'd like variations based on mood (luxury, minimalist, edgy) or if you want domain checks.`;
 
+  // Typing animation effect
+  useEffect(() => {
+    // Start typing automatically when component mounts
+    setIsTyping(true);
+    setDisplayedText('');
+    
+    let currentIndex = 0;
+    const typingSpeed = 15; // milliseconds per character
+    
+    const typeTimer = setInterval(() => {
+      if (currentIndex < fullAiResponse.length) {
+        setDisplayedText(fullAiResponse.slice(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        setIsTyping(false);
+        clearInterval(typeTimer);
+      }
+    }, typingSpeed);
+
+    return () => clearInterval(typeTimer);
+  }, [fullAiResponse]); // Include fullAiResponse as dependency
+
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(aiResponse);
+      await navigator.clipboard.writeText(displayedText || fullAiResponse);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -80,12 +104,13 @@ Let me know if you'd like variations based on mood (luxury, minimalist, edgy) or
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="flex items-center justify-center p-4 h-full">
       <div className="bg-gradient-to-br from-indigo-900/50 via-purple-900/50 to-indigo-800/50 rounded-lg p-6 max-w-6xl w-full shadow-2xl backdrop-blur-sm">
         {/* Scrollable Content Area */}
         <div className="bg-black/20 backdrop-blur-sm rounded-lg p-6 mb-4 max-h-[32rem] overflow-y-auto scrollbar-thin scrollbar-thumb-purple-400 scrollbar-track-transparent">
           <div className="text-white leading-relaxed whitespace-pre-line">
-            {aiResponse}
+            {displayedText}
+            {isTyping && <span className="animate-pulse">|</span>}
           </div>
         </div>
         

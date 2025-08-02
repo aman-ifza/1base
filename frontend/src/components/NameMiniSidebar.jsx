@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const NameMiniSidebar = () => {
+const NameMiniSidebar = ({ isCollapsed: forceCollapsed }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selectedIndustry, setSelectedIndustry] = useState('');
   const [brandDescription, setBrandDescription] = useState('');
@@ -10,11 +10,14 @@ const NameMiniSidebar = () => {
   const [resultCount, setResultCount] = useState(50);
   const [keywords, setKeywords] = useState('');
 
+  // Use forced collapsed state if provided, otherwise use internal state
+  const actuallyCollapsed = forceCollapsed !== undefined ? forceCollapsed : isCollapsed;
+
   return (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 flex h-[80vh]">
+    <div className="fixed left-64 top-1/2 -translate-y-1/2 flex h-[80vh] z-10">
       <div
         className={`bg-white transition-all duration-300 ease-in-out overflow-hidden
-        ${isCollapsed ? 'w-0' : 'w-80'} 
+        ${actuallyCollapsed ? 'w-0' : 'w-80'} 
         h-full rounded-tr-[34px] rounded-br-[34px] shadow-lg`}
       >
         <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent p-6">
@@ -121,12 +124,14 @@ const NameMiniSidebar = () => {
       {/* Toggle Button */}
       <div className="relative">
         <button
-          onClick={() => setIsCollapsed(!isCollapsed)}
+          onClick={() => forceCollapsed === undefined && setIsCollapsed(!isCollapsed)}
+          disabled={forceCollapsed !== undefined}
           className={`absolute top-1/2 -translate-y-1/2 flex items-center justify-center transition-all duration-300
             w-10 h-10 bg-white hover:bg-gray-50 rounded-full shadow-lg border border-gray-200
-            ${isCollapsed ? 'left-3' : '-right-5'}`}
+            ${actuallyCollapsed ? 'left-3' : '-right-5'}
+            ${forceCollapsed !== undefined ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
-          {isCollapsed ? (
+          {actuallyCollapsed ? (
             <ChevronRight className="w-5 h-5 text-gray-600" />
           ) : (
             <ChevronLeft className="w-5 h-5 text-gray-600" />

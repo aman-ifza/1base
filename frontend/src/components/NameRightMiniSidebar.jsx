@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const NameRightMiniSidebar = () => {
+const NameRightMiniSidebar = ({ isCollapsed: forceCollapsed }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [style, setStyle] = useState('Professional');
   const [useAcronyms, setUseAcronyms] = useState(false);
@@ -9,17 +9,22 @@ const NameRightMiniSidebar = () => {
   const [needsScreening, setNeedsScreening] = useState(false);
   const [creativityLevel, setCreativityLevel] = useState(50);
 
+  // Use forced collapsed state if provided, otherwise use internal state
+  const actuallyCollapsed = forceCollapsed !== undefined ? forceCollapsed : isCollapsed;
+
   return (
     <div className="relative isolate">
       <div className="fixed right-0 top-1/2 -translate-y-1/2 flex h-[80vh] z-10">
         <div className="relative">
           <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={() => forceCollapsed === undefined && setIsCollapsed(!isCollapsed)}
+            disabled={forceCollapsed !== undefined}
             className={`absolute top-1/2 -translate-y-1/2 flex items-center justify-center transition-all duration-300
               w-10 h-10 bg-white hover:bg-gray-50 rounded-full shadow-lg border border-gray-200 z-20
-              ${isCollapsed ? 'right-3' : '-left-5'}`}
+              ${actuallyCollapsed ? 'right-3' : '-left-5'}
+              ${forceCollapsed !== undefined ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
-            {isCollapsed ? (
+            {actuallyCollapsed ? (
               <ChevronLeft className="w-5 h-5 text-gray-600" />
             ) : (
               <ChevronRight className="w-5 h-5 text-gray-600" />
@@ -29,7 +34,7 @@ const NameRightMiniSidebar = () => {
 
         <div
           className={`bg-white transition-all duration-300 ease-in-out overflow-hidden
-          ${isCollapsed ? 'w-0' : 'w-80'} 
+          ${actuallyCollapsed ? 'w-0' : 'w-80'} 
           h-full rounded-tl-[34px] rounded-bl-[34px] shadow-lg`}
         >
           <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent p-4">

@@ -1,19 +1,19 @@
-const Brand = () => {
+const Brand = ({ name = "1base", description = "Created on: 19/10/24", logo = "", backgroundColor = "from-purple-900 to-gray-900" }) => {
   return (
-    <div className="flex justify-center items-center min-h-screen p-4">
-      <div className="bg-gradient-to-r from-purple-900 to-gray-900 text-white p-6 rounded-lg flex items-center justify-between min-h-24 w-[1100px] shadow-xl">
+    <div className={`bg-gradient-to-r ${backgroundColor} text-white p-6 rounded-lg flex items-center justify-between min-h-24 w-full shadow-xl`}>
       {/* Logo section */}
       <div className="flex-shrink-0 w-56">
         <img 
-          src="" 
-          alt="1base logo" 
+          src={logo} 
+          alt={`${name} logo`} 
+          className="h-16 w-auto object-contain"
         />
       </div>
       
       {/* Content section with title and date */}
       <div className="flex-1 px-6">
-        <h1 className="text-2xl font-bold mb-1">1base</h1>
-        <p className="text-gray-300 text-sm">Created on: 19/10/24</p>
+        <h1 className="text-2xl font-bold mb-1">{name}</h1>
+        <p className="text-gray-300 text-sm">{description}</p>
       </div>
       
       {/* Right section with arrow */}
@@ -34,7 +34,6 @@ const Brand = () => {
           </svg>
         </button>
       </div>
-    </div>
     </div>
   );
 };

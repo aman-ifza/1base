@@ -23,13 +23,15 @@ import TypographyTemplate from './components/TypographyTemplate';
 import TypographyPreview from './components/TypographyPreview';
 import TypographySidebar from './components/TypographySidebar';
 import Build from './Pages/Build';
+import MyBrands from './Pages/MyBrands';
+import Name from './Pages/Name';
 import GuidePage from './Pages/GuidePage';
 
 function App() {
 
   return (
     <div>     
-
+      <Name />
     </div>
   )
 }
