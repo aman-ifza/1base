@@ -4,7 +4,7 @@ import BrandSetupCardImageLeft from './BrandSetupCardImageLeft';
 import Build from '../assets/Build.jpg';
 import typography from '../assets/typography.png';
 import canvas from '../assets/canvas.png';
-import logo from '../assets/Logo.png';
+import logo from '../assets/logo.png';
 import inspiration from '../assets/inspiration.png';
 import api from '../assets/api.png';
 
