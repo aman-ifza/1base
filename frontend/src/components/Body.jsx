@@ -18,6 +18,9 @@ const Body = () => {
       buttonText: "ENGAGE CUSTOMERS",
       image: Build
     },
+
+
+    
     {
       type: 'left',
       title: "BRAND IDENTITY CREATION",
