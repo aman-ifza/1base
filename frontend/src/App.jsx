@@ -25,13 +25,14 @@ import TypographySidebar from './components/TypographySidebar';
 import Build from './Pages/Build';
 import MyBrands from './Pages/MyBrands';
 import Name from './Pages/Name';
+import LogoEditor from './Pages/LogoEditor';
 import GuidePage from './Pages/GuidePage';
 
 function App() {
 
   return (
     <div>     
-      <Name />
+      <LogoEditor />
     </div>
   )
 }

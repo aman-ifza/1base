@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const NameRightMiniSidebar = ({ isCollapsed: forceCollapsed }) => {
+const NameRightMiniSidebar = ({ isDisabled = false, forceCollapsed = false }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [style, setStyle] = useState('Professional');
   const [useAcronyms, setUseAcronyms] = useState(false);
@@ -10,19 +10,19 @@ const NameRightMiniSidebar = ({ isCollapsed: forceCollapsed }) => {
   const [creativityLevel, setCreativityLevel] = useState(50);
 
   // Use forced collapsed state if provided, otherwise use internal state
-  const actuallyCollapsed = forceCollapsed !== undefined ? forceCollapsed : isCollapsed;
+  const actuallyCollapsed = forceCollapsed || isCollapsed;
 
   return (
     <div className="relative isolate">
       <div className="fixed right-0 top-1/2 -translate-y-1/2 flex h-[80vh] z-10">
         <div className="relative">
           <button
-            onClick={() => forceCollapsed === undefined && setIsCollapsed(!isCollapsed)}
-            disabled={forceCollapsed !== undefined}
+            onClick={() => !isDisabled && setIsCollapsed(!isCollapsed)}
+            disabled={isDisabled}
             className={`absolute top-1/2 -translate-y-1/2 flex items-center justify-center transition-all duration-300
               w-10 h-10 bg-white hover:bg-gray-50 rounded-full shadow-lg border border-gray-200 z-20
               ${actuallyCollapsed ? 'right-3' : '-left-5'}
-              ${forceCollapsed !== undefined ? 'opacity-50 cursor-not-allowed' : ''}`}
+              ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             {actuallyCollapsed ? (
               <ChevronLeft className="w-5 h-5 text-gray-600" />

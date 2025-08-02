@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Move, Type, RotateCw, Trash2, Copy, ZoomIn, ZoomOut } from 'lucide-react';
 
 const DesignCanvas = () => {
@@ -97,7 +97,7 @@ const DesignCanvas = () => {
     }
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (isDragging && selectedTool === 'select') {
       const rect = canvasRef.current.getBoundingClientRect();
       const newX = e.clientX - rect.left - dragOffset.x;
@@ -107,12 +107,12 @@ const DesignCanvas = () => {
         el.id === isDragging ? { ...el, x: newX, y: newY } : el
       ));
     }
-  };
+  }, [isDragging, selectedTool, dragOffset.x, dragOffset.y]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
     setDragOffset({ x: 0, y: 0 });
-  };
+  }, []);
 
   const deleteSelectedElement = () => {
     const selectedElement = textElements.find(el => el.isSelected);
@@ -156,13 +156,13 @@ const DesignCanvas = () => {
       document.removeEventListener('mousemove', handleGlobalMouseMove);
       document.removeEventListener('mouseup', handleGlobalMouseUp);
     };
-  }, [isDragging, dragOffset]);
+  }, [isDragging, dragOffset, handleMouseMove, handleMouseUp]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8">
+    <div className="flex flex-col items-center justify-center w-full h-full p-4">
       
       {/* Toolbar */}
-      <div className="mb-6 bg-white rounded-lg shadow-lg p-4 flex items-center gap-4">
+      <div className="mb-6 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg p-4 flex items-center gap-4">
         {/* Tools */}
         <div className="flex gap-2">
           {tools.map((tool) => {
@@ -171,10 +171,10 @@ const DesignCanvas = () => {
               <button
                 key={tool.id}
                 onClick={() => handleToolClick(tool.id)}
-                className={`p-2 rounded-lg transition-colors ${
+                className={`p-2 rounded-lg transition-all duration-200 ${
                   selectedTool === tool.id 
-                    ? 'bg-blue-500 text-white' 
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                    ? 'bg-blue-500 text-white shadow-md' 
+                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700 hover:shadow-sm'
                 }`}
                 title={tool.label}
               >
@@ -184,13 +184,13 @@ const DesignCanvas = () => {
           })}
         </div>
 
-        <div className="w-px h-8 bg-gray-300 mx-2"></div>
+        <div className="w-px h-8 bg-gray-300 mx-1"></div>
 
         {/* Zoom Controls */}
         <div className="flex items-center gap-2">
           <button
             onClick={() => setZoom(Math.max(25, zoom - 25))}
-            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg"
+            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-200 hover:shadow-sm"
             title="Zoom Out"
           >
             <ZoomOut className="w-4 h-4" />
@@ -200,30 +200,31 @@ const DesignCanvas = () => {
           </span>
           <button
             onClick={() => setZoom(Math.min(200, zoom + 25))}
-            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg"
+            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-200 hover:shadow-sm"
             title="Zoom In"
           >
             <ZoomIn className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="w-px h-8 bg-gray-300 mx-2"></div>
+        <div className="w-px h-8 bg-gray-300 mx-1"></div>
 
         {/* Grid Toggle */}
         <button
           onClick={() => setShowGrid(!showGrid)}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
             showGrid 
-              ? 'bg-blue-500 text-white' 
-              : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+              ? 'bg-blue-500 text-white shadow-md' 
+              : 'bg-gray-100 hover:bg-gray-200 text-gray-700 hover:shadow-sm'
           }`}
         >
           Grid
         </button>
       </div>
 
-      {/* Canvas Container */}
-      <div className="relative bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden">
+      {/* Canvas Container - Centered */}
+      <div className="flex items-center justify-center w-full h-full">
+        <div className="relative backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
         
         {/* Canvas */}
         <div
@@ -232,10 +233,10 @@ const DesignCanvas = () => {
             selectedTool === 'text' ? 'cursor-crosshair' : 'cursor-default'
           }`}
           style={{
-            width: `${600 * (zoom / 100)}px`,
-            height: `${400 * (zoom / 100)}px`,
-            minWidth: '600px',
-            minHeight: '400px'
+            width: `${800 * (zoom / 100)}px`,
+            height: `${600 * (zoom / 100)}px`,
+            minWidth: '800px',
+            minHeight: '600px'
           }}
           onClick={handleCanvasClick}
         >
@@ -251,12 +252,12 @@ const DesignCanvas = () => {
                 <defs>
                   <pattern
                     id="grid"
-                    width={20 * (zoom / 100)}
-                    height={20 * (zoom / 100)}
+                    width={25 * (zoom / 100)}
+                    height={25 * (zoom / 100)}
                     patternUnits="userSpaceOnUse"
                   >
                     <path
-                      d={`M ${20 * (zoom / 100)} 0 L 0 0 0 ${20 * (zoom / 100)}`}
+                      d={`M ${25 * (zoom / 100)} 0 L 0 0 0 ${25 * (zoom / 100)}`}
                       fill="none"
                       stroke="rgba(255,255,255,0.3)"
                       strokeWidth="1"
@@ -345,15 +346,15 @@ const DesignCanvas = () => {
         </div>
 
         {/* Canvas Info */}
-        <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
-          600 × 400px
+        <div className="absolute bottom-6 right-6 bg-black/70 backdrop-blur-sm text-white text-sm px-3 py-2 rounded-lg">
+          800 × 600px
         </div>
       </div>
 
       {/* Property Panel for Selected Element */}
       {textElements.some(el => el.isSelected) && (
-        <div className="mt-6 bg-white rounded-lg shadow-lg p-4 w-full max-w-md">
-          <h3 className="font-semibold text-gray-800 mb-3">Text Properties</h3>
+        <div className="mt-8 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-6 w-full max-w-lg">
+          <h3 className="font-semibold text-gray-800 mb-4 text-lg">Text Properties</h3>
           {textElements.filter(el => el.isSelected).map(element => (
             <div key={element.id} className="space-y-3">
               <div>
@@ -397,6 +398,7 @@ const DesignCanvas = () => {
         </div>
       )}
     </div>
+  </div>
   );
 }
 

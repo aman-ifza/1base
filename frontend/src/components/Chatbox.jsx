@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Copy, FileText, Share2, ThumbsUp, ThumbsDown, Bookmark } from 'lucide-react';
 
-const Chatbox = () => {
+const Chatbox = ({ onTypingStatusChange }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isDisliked, setIsDisliked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -49,8 +49,9 @@ Let me know if you'd like variations based on mood (luxury, minimalist, edgy) or
 
   // Typing animation effect
   useEffect(() => {
-    // Start typing automatically when component mounts
+    // Only run once when component mounts
     setIsTyping(true);
+    if (onTypingStatusChange) onTypingStatusChange(true);
     setDisplayedText('');
     
     let currentIndex = 0;
@@ -62,12 +63,16 @@ Let me know if you'd like variations based on mood (luxury, minimalist, edgy) or
         currentIndex++;
       } else {
         setIsTyping(false);
+        if (onTypingStatusChange) onTypingStatusChange(false);
         clearInterval(typeTimer);
       }
     }, typingSpeed);
 
-    return () => clearInterval(typeTimer);
-  }, [fullAiResponse]); // Include fullAiResponse as dependency
+    return () => {
+      clearInterval(typeTimer);
+      if (onTypingStatusChange) onTypingStatusChange(false);
+    };
+  }, [fullAiResponse, onTypingStatusChange]); // Now safe with useCallback
 
   const handleCopy = async () => {
     try {
