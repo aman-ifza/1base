@@ -4,7 +4,7 @@ import BrandSetupCardImageLeft from './BrandSetupCardImageLeft';
 import Build from '../assets/Build.jpg';
 import typography from '../assets/typography.png';
 import canvas from '../assets/canvas.png';
-import Logo from '../assets/Logo.png';
+import logo from '../assets/Logo.png';
 import inspiration from '../assets/inspiration.png';
 import api from '../assets/api.png';
 
@@ -20,7 +20,7 @@ const Body = () => {
     },
 
 
-    
+
     {
       type: 'left',
       title: "BRAND IDENTITY CREATION",
@@ -40,7 +40,7 @@ const Body = () => {
       title: "LOGO DESIGN",
       description: "Create stunning, professional logos that capture your brand's essence. Our AI-powered design tools help you craft memorable visual identities that make lasting impressions.",
       buttonText: "DESIGN LOGOS",
-      image: Logo
+      image: logo
     },
     {
       type: 'right',
