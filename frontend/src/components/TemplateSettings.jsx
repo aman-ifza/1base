@@ -15,12 +15,14 @@ const TemplateSettings = ({
 
   const styleOptions = [
     'All', 'Modern', 'Classic', 'Minimalist', 'Bold',
-    'Elegant', 'Creative', 'Professional', 'Casual', 'Abstract', 'Geometric', 'Gaming'
+    'Elegant', 'Creative', 'Professional', 'Casual', 'Abstract', 'Geometric', 'Gaming',
+    'Clean', 'Dynamic'
   ];
 
   const themeOptions = [
     'All', 'Tech', 'Business', 'Entertainment', 'Design', 'Data',
-    'Healthcare', 'Finance', 'Education', 'Retail', 'Security', 'Environment', 'Science'
+    'Healthcare', 'Finance', 'Education', 'Retail', 'Security', 'Environment', 'Science',
+    'Marketing', 'Food', 'Real Estate', 'Fitness'
   ];
 
   const cloudOptions = [

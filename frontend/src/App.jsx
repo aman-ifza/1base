@@ -28,12 +28,14 @@ import Name from './Pages/Name';
 import LogoEditor from './Pages/LogoEditor';
 import GuidePage from './Pages/GuidePage';
 import Logo from './Pages/Logo';
+import Inspiration from './Pages/Inspiration';
+import Canvas from './Pages/Canvas';
 
 function App() {
 
   return (
     <div>     
-      <Logo />
+<Canvas />
     </div>
   )
 }
