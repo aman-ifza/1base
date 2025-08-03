@@ -6,6 +6,7 @@ const LogoCard = ({
   backgroundColor = "from-purple-600 to-blue-600",
   logoType = "text",
   textColor = "white",
+  logoImage = null,
   onEdit,
   onExport 
 }) => {
@@ -164,6 +165,20 @@ const LogoCard = ({
           </div>
         );
 
+      case 'image':
+        return (
+          <div className="w-full h-full">
+            {/* Image logo taking full card */}
+            {logoImage && (
+              <img 
+                src={logoImage} 
+                alt={name} 
+                className="w-full h-full object-cover rounded-lg"
+              />
+            )}
+          </div>
+        );
+
       default:
         return (
           <div className="flex flex-col items-center justify-center text-center">
@@ -183,9 +198,9 @@ const LogoCard = ({
   return (
     <div className="relative w-full group">
       {/* Main card container */}
-      <div className={`w-full h-64 bg-gradient-to-r ${backgroundColor} rounded-lg overflow-hidden shadow-lg`}>
+      <div className={`w-full h-64 ${logoType === 'image' ? 'bg-white' : `bg-gradient-to-r ${backgroundColor}`} rounded-lg overflow-hidden shadow-lg`}>
         {/* Logo content */}
-        <div className="w-full h-full flex items-center justify-center p-6">
+        <div className={`w-full h-full flex items-center justify-center ${logoType === 'image' ? 'p-0' : 'p-6'}`}>
           {renderLogo()}
         </div>
 

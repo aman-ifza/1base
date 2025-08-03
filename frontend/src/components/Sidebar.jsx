@@ -58,7 +58,7 @@ const Sidebar = () => {
   return (
     <div
       className={`bg-white transition-all duration-300 ease-in-out relative h-screen border-r border-gray-800/10 backdrop-blur-sm rounded-tr-[34px] rounded-br-[34px] ${
-        isCollapsed ? 'w-16' : 'w-64'
+        isCollapsed ? 'w-20' : 'w-64'
       }`}
     >
       {/* Header */}
@@ -91,20 +91,24 @@ const Sidebar = () => {
           <button
             key={name}
             onClick={() => handleItemClick(name, path)}
-            className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5 ${
+            className={`w-full flex items-center ${isCollapsed ? 'justify-center px-2 py-3' : 'gap-3 px-3 py-2'} rounded-lg transition-all duration-200 hover:-translate-y-0.5 ${
               activeItem === name
                 ? 'bg-[#291A94] text-white'
                 : 'text-black hover:bg-white/5 hover:text-zinc-700'
             }`}
           >
-            <img src={icon} alt={name} className="w-5 h-5 flex-shrink-0" />
+            <img 
+              src={icon} 
+              alt={name} 
+              className={`flex-shrink-0 ${isCollapsed ? 'w-6 h-6' : 'w-5 h-5'}`} 
+            />
             {!isCollapsed && <span className="font-medium">{name}</span>}
           </button>
         ))}
       </nav>
 
       {/* Collapse Toggle */}
-      <div className="absolute bottom-4 left-2">
+      <div className={`absolute bottom-4 ${isCollapsed ? 'left-1/2 transform -translate-x-1/2' : 'left-2'}`}>
         <button
           onClick={toggleSidebar}
           className="w-10 h-10 bg-white hover:bg-gray-50 rounded-xl flex items-center justify-center transition-colors duration-200 shadow-md"

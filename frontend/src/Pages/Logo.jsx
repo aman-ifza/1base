@@ -3,6 +3,14 @@ import Sidebar from '../components/Sidebar';
 import TemplateSettings from '../components/TemplateSettings';
 import LogoCard from '../components/LogoCard';
 
+// Import logo images
+import logo1 from '../Logo Card Images/logo1.png';
+import logo2 from '../Logo Card Images/logo2.png';
+import logo3 from '../Logo Card Images/logo3.png';
+import logo4 from '../Logo Card Images/logo4.png';
+import logo5 from '../Logo Card Images/logo5.png';
+import logo6 from '../Logo Card Images/logo6.png';
+
 const Logo = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStyle, setSelectedStyle] = useState('All');
@@ -13,60 +21,66 @@ const Logo = () => {
   const logoData = [
     {
       id: 1,
-      name: 'Hanover',
-      subtitle: 'TECH AGENCY',
+      name: 'Brand Logo 1',
+      subtitle: '',
       backgroundColor: 'from-blue-600 to-purple-700',
-      logoType: 'text',
+      logoType: 'image',
+      logoImage: logo1,
       style: 'Modern',
       theme: 'Tech',
       textColor: 'white'
     },
     {
       id: 2,
-      name: 'ChainBrand',
-      subtitle: 'YOUR SLOGAN',
+      name: 'Brand Logo 2',
+      subtitle: '',
       backgroundColor: 'from-purple-500 to-blue-600',
-      logoType: 'icon',
+      logoType: 'image',
+      logoImage: logo2,
       style: 'Abstract',
       theme: 'Business',
       textColor: 'white'
     },
     {
       id: 3,
-      name: 'OPENSIGNAL',
+      name: 'Brand Logo 3',
       subtitle: '',
       backgroundColor: 'from-blue-500 to-cyan-500',
-      logoType: 'icon',
+      logoType: 'image',
+      logoImage: logo3,
       style: 'Geometric',
       theme: 'Tech',
       textColor: 'white'
     },
     {
       id: 4,
-      name: 'GINYARD PHONE',
+      name: 'Brand Logo 4',
       subtitle: '',
       backgroundColor: 'from-gray-800 to-black',
-      logoType: 'icon',
+      logoType: 'image',
+      logoImage: logo4,
       style: 'Modern',
       theme: 'Tech',
       textColor: 'white'
     },
     {
       id: 5,
-      name: 'REAPER',
-      subtitle: 'ESPORTS',
+      name: 'Brand Logo 5',
+      subtitle: '',
       backgroundColor: 'from-purple-800 to-purple-900',
-      logoType: 'mascot',
-      style: 'Gaming',
+      logoType: 'image',
+      logoImage: logo5,
+      style: 'Creative',
       theme: 'Entertainment',
       textColor: 'white'
     },
     {
       id: 6,
-      name: 'ABSTRACT SPIN',
-      subtitle: 'CREATIVE',
+      name: 'Brand Logo 6',
+      subtitle: '',
       backgroundColor: 'from-white to-gray-100',
-      logoType: 'abstract',
+      logoType: 'image',
+      logoImage: logo6,
       style: 'Creative',
       theme: 'Design',
       textColor: 'black'
@@ -180,6 +194,7 @@ const Logo = () => {
                     subtitle={logo.subtitle}
                     backgroundColor={logo.backgroundColor}
                     logoType={logo.logoType}
+                    logoImage={logo.logoImage}
                     textColor={logo.textColor}
                     onEdit={() => console.log(`Edit logo: ${logo.name}`)}
                     onExport={() => console.log(`Export logo: ${logo.name}`)}
