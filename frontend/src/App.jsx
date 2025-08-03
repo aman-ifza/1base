@@ -33,6 +33,8 @@ import Inspiration from './Pages/Inspiration';
 import Canvas from './Pages/Canvas';
 import ApiDocs from './Pages/ApiDocs';
 import Typography from './Pages/Typography';
+import TypographyView from './Pages/TypographyView';
+import TypographyPreviewPage from './Pages/TypographyPreviewPage';
 import TypographyGuide from './Pages/TypographyGuide';
 import BuildGuide from './Pages/BuildGuide';
 import CanvasGuide from './Pages/CanvasGuide';
@@ -50,6 +52,8 @@ function App() {
           <Route path="/build" element={<Build />} />
           <Route path="/name" element={<Name />} />
           <Route path="/typography" element={<Typography />} />
+          <Route path="/typography/view" element={<TypographyView />} />
+          <Route path="/typography/preview/:templateId" element={<TypographyPreviewPage />} />
           <Route path="/tone" element={<Build />} /> {/* Tone uses Build layout */}
           <Route path="/logo" element={<Logo />} />
           <Route path="/canvas" element={<Canvas />} />

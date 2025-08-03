@@ -16,6 +16,7 @@ import inspirationIcon from '../Sidebar Logos/inspiration.png';
 import brandIcon from '../Sidebar Logos/brand.png';
 import guideIcon from '../Sidebar Logos/design.svg';
 import apiIcon from '../Sidebar Logos/api.png';
+import baseLogo from '../assets/base.png';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -26,7 +27,7 @@ const Sidebar = () => {
   const sidebarItems = useMemo(() => [
     { name: 'Build', icon: buildIcon, path: '/build' },
     { name: 'Name', icon: nameIcon, path: '/name' },
-    { name: 'Typography', icon: typographyIcon, path: '/typography' },
+    { name: 'Typography', icon: typographyIcon, path: '/typography/view' },
     { name: 'Tone', icon: toneIcon, path: '/tone' },
     { name: 'Logo', icon: logoIcon, path: '/logo' },
     { name: 'Canvas', icon: canvasIcon, path: '/canvas' },
@@ -43,6 +44,8 @@ const Sidebar = () => {
       setActiveItem(currentItem.name);
     } else if (location.pathname === '/' || location.pathname === '/home') {
       setActiveItem('Home');
+    } else if (location.pathname === '/typography') {
+      setActiveItem('Typography');
     }
   }, [location.pathname, sidebarItems]);
 
@@ -66,20 +69,25 @@ const Sidebar = () => {
         <div className="flex items-center justify-between">
           {!isCollapsed ? (
             <div 
-              className="flex items-center gap-2 cursor-pointer"
+              className="flex items-center justify-start w-full cursor-pointer"
               onClick={() => navigate('/')}
             >
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#5543E8]">
-                <span className="text-white font-bold text-sm">1b</span>
-              </div>
-              <span className="text-xl font-bold text-black">1base</span>
+              <img 
+                src={baseLogo} 
+                alt="1base Logo" 
+                className="w-16 h-16 object-contain"
+              />
             </div>
           ) : (
             <div 
-              className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto bg-[#5543E8] cursor-pointer"
+              className="w-16 h-16 flex items-center justify-center mx-auto cursor-pointer"
               onClick={() => navigate('/')}
             >
-              <span className="text-white font-bold text-sm">1b</span>
+              <img 
+                src={baseLogo} 
+                alt="1base Logo" 
+                className="w-16 h-16 object-contain"
+              />
             </div>
           )}
         </div>

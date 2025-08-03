@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import typographymain from '../main page logos/Typographymain.png';
+import typographybody from '../main page logos/Typographybody.jpg';
 
 const TypographyGuide = () => {
   return (
@@ -26,11 +28,12 @@ const TypographyGuide = () => {
               </p>
             </div>
             <div className="bg-white/10 rounded-lg p-8 flex items-center justify-center min-h-[300px]">
-              {/* Main Image Placeholder */}
-              <div className="text-center">
-                <div className="text-6xl font-bold mb-4">Anatomy Of</div>
-                <div className="text-4xl font-serif text-red-400">A Typeface</div>
-              </div>
+              {/* Main Image */}
+              <img 
+                src={typographymain} 
+                alt="Typography Guide" 
+                className="max-w-full max-h-full object-contain"
+              />
             </div>
           </div>
         </div>
@@ -75,12 +78,13 @@ const TypographyGuide = () => {
                 that best represent the brand and refine them digitally.
               </p>
               
-              {/* Image placeholder for sketching workspace */}
+              {/* Image for typography workspace */}
               <div className="bg-gray-100 rounded-lg p-8 my-8 min-h-[400px] flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <p className="text-lg font-medium">Sketching workspace illustration</p>
-                  <p className="text-sm">Image of design sketches and tools will be placed here</p>
-                </div>
+                <img 
+                  src={typographybody} 
+                  alt="Typography workspace and design process" 
+                  className="max-w-full max-h-full object-contain rounded-lg"
+                />
               </div>
             </div>
 

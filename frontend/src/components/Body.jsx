@@ -26,9 +26,9 @@ const Body = () => {
       type: 'left',
       title: "BRAND IDENTITY CREATION",
       description: "Create a distinctive brand identity that sets you apart from competitors. Our tools help you develop a unique voice and visual style that resonates with your target audience.",
-      buttonText: "EXPLORE BRANDING",
+      buttonText: "EXPLORE TYPOGRAPHY",
       image: typography,
-      route: '/typography'
+      route: '/typography/view'
     },
     {
       type: 'right',

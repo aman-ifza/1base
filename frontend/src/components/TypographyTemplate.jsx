@@ -31,10 +31,9 @@ const TypographyTemplate = ({
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
-      <div className="w-[400px] bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-        {/* Header */}
-        <div className="p-6 pb-4">
+    <div className="w-[400px] bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+      {/* Header */}
+      <div className="p-6 pb-4">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-bold text-gray-900" style={{ fontFamily: 'Fira Code, monospace' }}>
               {title}
@@ -101,7 +100,6 @@ const TypographyTemplate = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

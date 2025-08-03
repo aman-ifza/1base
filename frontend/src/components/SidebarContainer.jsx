@@ -7,7 +7,7 @@ const SidebarContainer = () => {
     <div className="flex">
       <div className="relative">
         <Sidebar />
-        <div className="absolute top-0" style={{ left: 'calc(100% - 12px)' }}>
+        <div className="absolute top-0 left-full">
           <MiniSidebar />
         </div>
       </div>

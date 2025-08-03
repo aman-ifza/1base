@@ -32,13 +32,13 @@ const NameMiniSidebar = ({ isDisabled = false, forceCollapsed = false }) => {
               <select
                 value={selectedIndustry}
                 onChange={(e) => setSelectedIndustry(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-black bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               >
-                <option value="">Select industry</option>
-                <option value="technology">Technology</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="finance">Finance</option>
-                <option value="retail">Retail</option>
+                <option value="" className="text-black">Select industry</option>
+                <option value="technology" className="text-black">Technology</option>
+                <option value="healthcare" className="text-black">Healthcare</option>
+                <option value="finance" className="text-black">Finance</option>
+                <option value="retail" className="text-black">Retail</option>
               </select>
             </div>
 
@@ -51,7 +51,7 @@ const NameMiniSidebar = ({ isDisabled = false, forceCollapsed = false }) => {
                 value={brandDescription}
                 onChange={(e) => setBrandDescription(e.target.value)}
                 placeholder="Describe your brand personality, values, and target audience..."
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 h-24 resize-none text-black bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               />
             </div>
 
@@ -61,12 +61,12 @@ const NameMiniSidebar = ({ isDisabled = false, forceCollapsed = false }) => {
               <select
                 value={selectedLanguage}
                 onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-black bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               >
-                <option value="English">English</option>
-                <option value="Spanish">Spanish</option>
-                <option value="French">French</option>
-                <option value="German">German</option>
+                <option value="English" className="text-black">English</option>
+                <option value="Spanish" className="text-black">Spanish</option>
+                <option value="French" className="text-black">French</option>
+                <option value="German" className="text-black">German</option>
               </select>
             </div>
 
@@ -114,7 +114,7 @@ const NameMiniSidebar = ({ isDisabled = false, forceCollapsed = false }) => {
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
                 placeholder="Trust, Fast"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-black bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               />
             </div>
           </div>

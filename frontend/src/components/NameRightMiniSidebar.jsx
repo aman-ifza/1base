@@ -14,7 +14,7 @@ const NameRightMiniSidebar = ({ isDisabled = false, forceCollapsed = false }) =>
 
   return (
     <div className="relative isolate">
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 flex h-[80vh] z-10">
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 flex h-[60vh] z-10">
         <div className="relative">
           <button
             onClick={() => !isDisabled && setIsCollapsed(!isCollapsed)}
@@ -47,12 +47,12 @@ const NameRightMiniSidebar = ({ isDisabled = false, forceCollapsed = false }) =>
                 <select
                   value={style}
                   onChange={(e) => setStyle(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-black bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 >
-                  <option value="Professional">Professional</option>
-                  <option value="Creative">Creative</option>
-                  <option value="Modern">Modern</option>
-                  <option value="Traditional">Traditional</option>
+                  <option value="Professional" className="text-black">Professional</option>
+                  <option value="Creative" className="text-black">Creative</option>
+                  <option value="Modern" className="text-black">Modern</option>
+                  <option value="Traditional" className="text-black">Traditional</option>
                 </select>
               </div>
 

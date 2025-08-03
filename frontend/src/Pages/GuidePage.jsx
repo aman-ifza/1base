@@ -4,10 +4,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BrandSetupCard from '../components/BrandSetupCard';
 import BrandSetupCardImageLeft from '../components/BrandSetupCardImageLeft';
-import hero from "../assets/hero.jpg";
 import Build from '../assets/Build.jpg';
 import typography from '../assets/typography.png';
 import canvas from '../assets/canvas.png';
+import brandmain from '../main page logos/brandmain.png';
 
 const GuidePage = () => {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ const GuidePage = () => {
                     </div>
                     
                     <div className="hidden md:block">
-                        <img src={hero} alt="hero" className="max-w-md" />
+                        <img src={brandmain} alt="brand guide" className="max-w-md" />
                     </div> 
                 </div>
             </section>
