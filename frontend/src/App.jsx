@@ -33,6 +33,9 @@ import Inspiration from './Pages/Inspiration';
 import Canvas from './Pages/Canvas';
 import ApiDocs from './Pages/ApiDocs';
 import Typography from './Pages/Typography';
+import TypographyGuide from './Pages/TypographyGuide';
+import BuildGuide from './Pages/BuildGuide';
+import CanvasGuide from './Pages/CanvasGuide';
 
 function App() {
   return (
@@ -55,6 +58,9 @@ function App() {
           
           {/* Additional Pages */}
           <Route path="/guide" element={<GuidePage />} />
+          <Route path="/guide/typography" element={<TypographyGuide />} />
+          <Route path="/guide/build" element={<BuildGuide />} />
+          <Route path="/guide/canvas" element={<CanvasGuide />} />
           <Route path="/api" element={<ApiDocs />} />
           <Route path="/logo-editor" element={<LogoEditor />} />
           

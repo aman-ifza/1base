@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BrandSetupCard from '../components/BrandSetupCard';
@@ -9,6 +10,8 @@ import typography from '../assets/typography.png';
 import canvas from '../assets/canvas.png';
 
 const GuidePage = () => {
+    const navigate = useNavigate();
+    
     // Custom Hero Section for Guide Page
     const GuideHero = () => {
         return (
@@ -45,24 +48,27 @@ const GuidePage = () => {
         const cardData = [
             {
                 type: 'right',
-                title: "CUSTOMER ENGAGEMENT",
-                description: "Build stronger relationships with your customers through personalized engagement tools. Create meaningful interactions that drive loyalty and business growth.",
-                buttonText: "ENGAGE CUSTOMERS",
-                image: Build
+                title: "BUILD GUIDE",
+                description: "Learn how to create a comprehensive brand identity system that resonates with your audience and stands out in the market.",
+                buttonText: "START BUILDING",
+                image: Build,
+                route: '/guide/build'
             },
             {
                 type: 'left',
-                title: "BRAND IDENTITY CREATION",
-                description: "Create a distinctive brand identity that sets you apart from competitors. Our tools help you develop a unique voice and visual style that resonates with your target audience.",
-                buttonText: "EXPLORE BRANDING",
-                image: typography
+                title: "TYPOGRAPHY GUIDE",
+                description: "Master the art of typography selection for your brand. Learn how to choose fonts that align with your brand personality and create visual hierarchy.",
+                buttonText: "LEARN TYPOGRAPHY",
+                image: typography,
+                route: '/guide/typography'
             },
             {
                 type: 'right',
-                title: "MARKETING AUTOMATION",
-                description: "Streamline your marketing efforts with powerful automation tools. Schedule posts, analyze performance, and engage with your audience across multiple platforms effortlessly.",
-                buttonText: "START AUTOMATING",
-                image: canvas
+                title: "CANVAS GUIDE",
+                description: "Unlock the full potential of our design canvas with advanced techniques, shortcuts, and best practices to create stunning designs efficiently.",
+                buttonText: "MASTER CANVAS",
+                image: canvas,
+                route: '/guide/canvas'
             }
         ];
 
@@ -95,7 +101,7 @@ const GuidePage = () => {
                                             {card.description}
                                         </p>
                                         <button 
-                                            onClick={() => console.log(`Card ${index + 1} clicked`)}
+                                            onClick={() => navigate(card.route)}
                                             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 self-start"
                                         >
                                             {card.buttonText} →
@@ -134,7 +140,7 @@ const GuidePage = () => {
                                             {card.description}
                                         </p>
                                         <button 
-                                            onClick={() => console.log(`Card ${index + 1} clicked`)}
+                                            onClick={() => navigate(card.route)}
                                             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 self-start"
                                         >
                                             {card.buttonText} →
