@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   ChevronLeft,
   ChevronRight,
@@ -16,26 +17,39 @@ import {
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeItem, setActiveItem] = useState('Build');
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const sidebarItems = [
-    { name: 'Build', icon: Hammer },
-    { name: 'Name', icon: Type },
-    { name: 'Typography', icon: Type },
-    { name: 'Tone', icon: Volume2 },
-    { name: 'Logo', icon: Zap },
-    { name: 'Canvas', icon: Palette },
-    { name: 'Inspiration', icon: Lightbulb },
-    { name: 'My Brands', icon: Users },
-    { name: 'Guide', icon: BookOpen },
-    { name: 'API', icon: Code }
-  ];
+  const sidebarItems = useMemo(() => [
+    { name: 'Build', icon: Hammer, path: '/build' },
+    { name: 'Name', icon: Type, path: '/name' },
+    { name: 'Typography', icon: Type, path: '/typography' },
+    { name: 'Tone', icon: Volume2, path: '/tone' },
+    { name: 'Logo', icon: Zap, path: '/logo' },
+    { name: 'Canvas', icon: Palette, path: '/canvas' },
+    { name: 'Inspiration', icon: Lightbulb, path: '/inspiration' },
+    { name: 'My Brands', icon: Users, path: '/my-brands' },
+    { name: 'Guide', icon: BookOpen, path: '/guide' },
+    { name: 'API', icon: Code, path: '/api' }
+  ], []);
+
+  // Update active item based on current route
+  useEffect(() => {
+    const currentItem = sidebarItems.find(item => item.path === location.pathname);
+    if (currentItem) {
+      setActiveItem(currentItem.name);
+    } else if (location.pathname === '/' || location.pathname === '/home') {
+      setActiveItem('Home');
+    }
+  }, [location.pathname, sidebarItems]);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const handleItemClick = (name) => {
+  const handleItemClick = (name, path) => {
     setActiveItem(name);
+    navigate(path);
   };
 
   return (
@@ -48,14 +62,20 @@ const Sidebar = () => {
       <div className="p-4">
         <div className="flex items-center justify-between">
           {!isCollapsed ? (
-            <div className="flex items-center gap-2">
+            <div 
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => navigate('/')}
+            >
               <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#5543E8]">
                 <span className="text-white font-bold text-sm">1b</span>
               </div>
-              <span className="text-xl font-bold text-white">1base</span>
+              <span className="text-xl font-bold text-black">1base</span>
             </div>
           ) : (
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto bg-[#5543E8]">
+            <div 
+              className="w-8 h-8 rounded-lg flex items-center justify-center mx-auto bg-[#5543E8] cursor-pointer"
+              onClick={() => navigate('/')}
+            >
               <span className="text-white font-bold text-sm">1b</span>
             </div>
           )}
@@ -64,17 +84,17 @@ const Sidebar = () => {
 
       {/* Navigation Items */}
       <nav className="p-4 space-y-1">
-        {sidebarItems.map(({ name, icon: Icon }) => (
+        {sidebarItems.map(({ name, icon: IconComponent, path }) => (
           <button
             key={name}
-            onClick={() => handleItemClick(name)}
+            onClick={() => handleItemClick(name, path)}
             className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5 ${
               activeItem === name
                 ? 'bg-[#291A94] text-white'
                 : 'text-black hover:bg-white/5 hover:text-zinc-700'
             }`}
           >
-            <Icon className="w-5 h-5 flex-shrink-0" />
+            <IconComponent className="w-5 h-5 flex-shrink-0" />
             {!isCollapsed && <span className="font-medium">{name}</span>}
           </button>
         ))}

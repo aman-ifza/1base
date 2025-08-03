@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import BrandSetupCard from './BrandSetupCard';
 import BrandSetupCardImageLeft from './BrandSetupCardImageLeft';
 import Build from '../assets/Build.jpg';
@@ -10,51 +11,56 @@ import api from '../assets/api.png';
 
 // Main Section Component with dark background
 const Body = () => {
+  const navigate = useNavigate();
+
   const cardData = [
     {
       type: 'right',
       title: "CUSTOMER ENGAGEMENT",
       description: "Build stronger relationships with your customers through personalized engagement tools. Create meaningful interactions that drive loyalty and business growth.",
       buttonText: "ENGAGE CUSTOMERS",
-      image: Build
+      image: Build,
+      route: '/build'
     },
-
-
-
     {
       type: 'left',
       title: "BRAND IDENTITY CREATION",
       description: "Create a distinctive brand identity that sets you apart from competitors. Our tools help you develop a unique voice and visual style that resonates with your target audience.",
       buttonText: "EXPLORE BRANDING",
-      image: typography
+      image: typography,
+      route: '/typography'
     },
     {
       type: 'right',
       title: "MARKETING AUTOMATION",
       description: "Streamline your marketing efforts with powerful automation tools. Schedule posts, analyze performance, and engage with your audience across multiple platforms effortlessly.",
       buttonText: "START AUTOMATING",
-      image: canvas
+      image: canvas,
+      route: '/canvas'
     },
     {
       type: 'left',
       title: "LOGO DESIGN",
       description: "Create stunning, professional logos that capture your brand's essence. Our AI-powered design tools help you craft memorable visual identities that make lasting impressions.",
       buttonText: "DESIGN LOGOS",
-      image: logo
+      image: logo,
+      route: '/logo'
     },
     {
       type: 'right',
       title: "CREATIVE INSPIRATION",
       description: "Discover endless design possibilities with our curated inspiration gallery. Explore trending styles, color palettes, and layouts to spark your creative vision.",
       buttonText: "GET INSPIRED",
-      image: inspiration
+      image: inspiration,
+      route: '/inspiration'
     },
     {
       type: 'left',
       title: "API INTEGRATION",
       description: "Seamlessly integrate our powerful branding tools into your applications. Access our comprehensive API to build custom solutions and automate your design workflow.",
       buttonText: "EXPLORE API",
-      image: api
+      image: api,
+      route: '/api'
     }
   ];
 
@@ -81,7 +87,7 @@ const Body = () => {
               description={card.description}
               buttonText={card.buttonText}
               image={card.image}
-              onButtonClick={() => console.log(`Card ${index + 1} clicked`)}
+              onButtonClick={() => navigate(card.route)}
             />
           ) : (
             <BrandSetupCardImageLeft
@@ -90,7 +96,7 @@ const Body = () => {
               description={card.description}
               buttonText={card.buttonText}
               image={card.image}
-              onButtonClick={() => console.log(`Card ${index + 1} clicked`)}
+              onButtonClick={() => navigate(card.route)}
             />
           )
         ))}

@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import "./gradient-bg.css";
 import Sidebar from './components/Sidebar';
@@ -31,14 +32,38 @@ import Logo from './Pages/Logo';
 import Inspiration from './Pages/Inspiration';
 import Canvas from './Pages/Canvas';
 import ApiDocs from './Pages/ApiDocs';
+import Typography from './Pages/Typography';
 
 function App() {
-
   return (
-    <div>     
-<LandingPage />
-    </div>
-  )
+    <Router>
+      <div>
+        <Routes>
+          {/* Main Landing Page */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<LandingPage />} />
+          
+          {/* Core Application Pages */}
+          <Route path="/build" element={<Build />} />
+          <Route path="/name" element={<Name />} />
+          <Route path="/typography" element={<Typography />} />
+          <Route path="/tone" element={<Build />} /> {/* Tone uses Build layout */}
+          <Route path="/logo" element={<Logo />} />
+          <Route path="/canvas" element={<Canvas />} />
+          <Route path="/inspiration" element={<Inspiration />} />
+          <Route path="/my-brands" element={<MyBrands />} />
+          
+          {/* Additional Pages */}
+          <Route path="/guide" element={<GuidePage />} />
+          <Route path="/api" element={<ApiDocs />} />
+          <Route path="/logo-editor" element={<LogoEditor />} />
+          
+          {/* Fallback Route */}
+          <Route path="*" element={<LandingPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;

@@ -1,6 +1,10 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import hero from "../assets/hero.jpg"; // Adjust the path as necessary
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
    <section className="w-full bg-[#171568] px-6 py-20">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between">
@@ -13,12 +17,12 @@ const Hero = () => {
           </p>
 
           <div className="pt-2">
-            <a
-              href="#"
+            <button
+              onClick={() => navigate('/build')}
               className="inline-block px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm rounded-md transition duration-300"
             >
               GET STARTED →
-            </a>
+            </button>
           </div>
         </div>
         
