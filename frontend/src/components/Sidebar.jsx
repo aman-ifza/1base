@@ -18,7 +18,7 @@ import guideIcon from '../Sidebar Logos/design.svg';
 import apiIcon from '../Sidebar Logos/api.png';
 import baseLogo from '../assets/base.png';
 
-const Sidebar = () => {
+const Sidebar = ({ onCollapseChange }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeItem, setActiveItem] = useState('Build');
   const navigate = useNavigate();
@@ -46,11 +46,17 @@ const Sidebar = () => {
       setActiveItem('Home');
     } else if (location.pathname === '/typography') {
       setActiveItem('Typography');
+    } else if (location.pathname === '/tone') {
+      setActiveItem('Tone');
     }
   }, [location.pathname, sidebarItems]);
 
   const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
+    const newCollapsedState = !isCollapsed;
+    setIsCollapsed(newCollapsedState);
+    if (onCollapseChange) {
+      onCollapseChange(newCollapsedState);
+    }
   };
 
   const handleItemClick = (name, path) => {

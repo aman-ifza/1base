@@ -256,36 +256,6 @@ X-RateLimit-Reset: 1705320000`}
           </div>
         );
 
-      case 'request-response':
-        return (
-          <div className="max-w-4xl">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">Request/Response Format</h1>
-            
-            <div className="space-y-6 mb-8">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Request Format</h3>
-                <ul className="list-disc list-inside text-gray-600 space-y-1">
-                  <li>All requests must include <code className="bg-gray-100 px-2 py-1 rounded">Content-Type: application/json</code> header</li>
-                  <li>All timestamps are in ISO 8601 format (UTC)</li>
-                  <li>File uploads use <code className="bg-gray-100 px-2 py-1 rounded">multipart/form-data</code></li>
-                  <li>Responses include execution time and credit usage metadata</li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Standard Response Structure</h2>
-            <ResponseBlock response={`{
-  "data": { /* response data */ },
-  "meta": {
-    "request_id": "req_abc123",
-    "execution_time_ms": 245,
-    "credits_used": 15,
-    "api_version": "v1.2.3"
-  }
-}`} title="Standard API Response" />
-          </div>
-        );
-
       case 'generate-brand-dna':
         return (
           <div className="max-w-4xl">
@@ -386,399 +356,7 @@ X-RateLimit-Reset: 1705320000`}
           </div>
         );
 
-      case 'get-brand-dna-status':
-        return (
-          <div className="max-w-4xl">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">Get Brand DNA Status</h1>
-            
-            <p className="text-lg text-gray-600 mb-8">
-              Check the human review status and retrieve refined results. Human experts review all AI-generated brand DNA 
-              for quality, market relevance, and strategic viability.
-            </p>
-
-            <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8">
-              <h3 className="text-lg font-semibold text-green-800 mb-2">Endpoint</h3>
-              <code className="text-green-900 font-mono text-lg">GET /brand-dna/&#123;brand_dna_id&#125;</code>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Query Parameters</h2>
-            <ParameterTable parameters={[
-              { name: 'include_feedback', type: 'boolean', required: false, description: 'Include expert reviewer feedback and suggestions' },
-              { name: 'include_alternatives', type: 'boolean', required: false, description: 'Include alternative concepts generated during review' }
-            ]} />
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Response Status Values</h2>
-            <div className="bg-gray-50 rounded-lg p-4 mb-8">
-              <div className="space-y-2 text-sm">
-                <div><span className="font-mono bg-blue-100 px-2 py-1 rounded">ai_generated</span> - Initial AI processing complete, awaiting human review</div>
-                <div><span className="font-mono bg-yellow-100 px-2 py-1 rounded">in_human_review</span> - Currently being reviewed by brand experts</div>
-                <div><span className="font-mono bg-green-100 px-2 py-1 rounded">human_approved</span> - Approved by experts, ready for asset generation</div>
-                <div><span className="font-mono bg-orange-100 px-2 py-1 rounded">revision_requested</span> - Requires modifications based on expert feedback</div>
-                <div><span className="font-mono bg-red-100 px-2 py-1 rounded">rejected</span> - Does not meet quality standards (rare, full refund issued)</div>
-              </div>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Response (Human Approved)</h2>
-            <ResponseBlock response={`{
-  "brand_dna_id": "dna_abc123xyz",
-  "status": "human_approved",
-  "completion_time": "2024-01-15T16:45:00Z",
-  "review_duration_hours": 26,
-  "final_concept": {
-    "concept_id": "concept_refined_1",
-    "theme": "Conscious Craft",
-    "description": "Artisanal coffee brand that bridges the gap between farmers and consumers through transparent, sustainable practices and exceptional craft",
-    "positioning_statement": "Where ethical sourcing meets exceptional craft",
-    "unique_value_proposition": "The only coffee roaster in your city that lets you trace every bean back to the farmer who grew it"
-  },
-  "expert_feedback": {
-    "reviewer_name": "Sarah Chen",
-    "reviewer_credentials": "10+ years brand strategy, specialty F&B focus",
-    "key_refinements": [
-      "Elevated archetype from 'caregiver' to 'sage' to emphasize expertise",
-      "Strengthened premium positioning while maintaining approachability",
-      "Added traceability as core differentiator"
-    ],
-    "market_validation": "Strong differentiation in crowded specialty coffee market. Premium positioning justified by direct trade focus."
-  },
-  "readiness_score": 0.94,
-  "recommended_next_steps": ["brand_universe_generation", "trademark_search"]
-}`} />
-          </div>
-        );
-
-      case 'generate-brand-universe':
-        return (
-          <div className="max-w-4xl">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">Generate Complete Brand Universe</h1>
-            
-            <p className="text-lg text-gray-600 mb-8">
-              Create comprehensive brand materials including logos, colors, typography, and guidelines. 
-              This endpoint generates a complete brand system based on approved Brand DNA.
-            </p>
-
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
-              <h3 className="text-lg font-semibold text-blue-800 mb-2">Endpoint</h3>
-              <code className="text-blue-900 font-mono text-lg">POST /brand-universe/generate</code>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Available Asset Types</h2>
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Core Assets</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• <code>logo</code> - Complete logo system with variations</li>
-                  <li>• <code>color_palette</code> - Primary, secondary, and neutral colors</li>
-                  <li>• <code>typography</code> - Font selections and pairings</li>
-                  <li>• <code>style_guide</code> - Comprehensive brand guidelines</li>
-                </ul>
-              </div>
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Applied Assets</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• <code>business_cards</code> - Professional business card designs</li>
-                  <li>• <code>letterhead</code> - Branded letterhead templates</li>
-                  <li>• <code>social_media_kit</code> - Profile images, cover photos</li>
-                  <li>• <code>website_mockup</code> - Homepage design concept</li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Request</h2>
-            <CodeBlock 
-              code={`{
-  "brand_dna_id": "dna_abc123xyz",
-  "asset_types": ["logo", "color_palette", "typography", "style_guide", "business_cards"],
-  "logo_variations": ["primary", "horizontal", "icon", "monogram", "reversed"],
-  "color_scheme_preference": "warm_earthy",
-  "industry_conventions": true,
-  "file_formats": ["svg", "png", "pdf", "eps"],
-  "brand_applications": ["storefront_signage", "packaging", "digital_marketing", "merchandise"],
-  "rush_delivery": false,
-  "style_preferences": {
-    "logo_complexity": "balanced",
-    "color_vibrancy": "sophisticated",
-    "typography_style": "modern_classic"
-  }
-}`}
-              language="json"
-              id="brand-universe-request"
-              title="Request Body"
-            />
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Response (Completed)</h2>
-            <ResponseBlock response={`{
-  "universe_id": "universe_xyz789",
-  "status": "completed",
-  "completion_time": "2024-01-15T18:42:00Z",
-  "generation_duration_minutes": 28,
-  "assets": {
-    "logos": [
-      {
-        "variation": "primary",
-        "description": "Main logo combining coffee bean icon with elegant wordmark",
-        "use_cases": ["business cards", "signage", "general branding"],
-        "formats": {
-          "svg": "https://assets.1base.io/universe_xyz789/logos/primary.svg",
-          "png_300dpi": "https://assets.1base.io/universe_xyz789/logos/primary_300.png",
-          "eps": "https://assets.1base.io/universe_xyz789/logos/primary.eps"
-        },
-        "dimensions": {
-          "minimum_width_px": 120,
-          "optimal_width_px": 300,
-          "aspect_ratio": "3:2"
-        }
-      }
-    ],
-    "color_palette": {
-      "name": "Roasted Earth Premium",
-      "primary": {
-        "hex": "#8B4513",
-        "rgb": "rgb(139, 69, 19)",
-        "pantone": "476 C",
-        "usage": "Main brand color, primary logo, key headlines"
-      },
-      "accessibility": {
-        "aa_compliant_combinations": [
-          {"foreground": "#2F2F2F", "background": "#FFFFFF"},
-          {"foreground": "#8B4513", "background": "#F4F4F4"}
-        ],
-        "contrast_ratios_tested": true
-      }
-    }
-  },
-  "quality_metrics": {
-    "brand_consistency_score": 0.92,
-    "market_differentiation_score": 0.88,
-    "scalability_score": 0.95,
-    "expert_approval_rating": 4.8
-  },
-  "usage_rights": {
-    "license_type": "commercial_unlimited",
-    "trademark_guidance_included": true,
-    "modification_rights": "full_customization_allowed"
-  },
-  "credits_used": 65
-}`} />
-          </div>
-        );
-
-      case 'mix-match-assets':
-        return (
-          <div className="max-w-4xl">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">Mix & Match Assets</h1>
-            
-            <p className="text-lg text-gray-600 mb-8">
-              Swap and customize individual brand components without regenerating the entire universe. 
-              Perfect for iterating on specific elements while maintaining overall brand consistency.
-            </p>
-
-            <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-8">
-              <h3 className="text-lg font-semibold text-orange-800 mb-2">Endpoint</h3>
-              <code className="text-orange-900 font-mono text-lg">PUT /brand-universe/&#123;universe_id&#125;/assets</code>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Request</h2>
-            <CodeBlock 
-              code={`{
-  "modifications": {
-    "color_palette": {
-      "primary": "#1E5F3F",
-      "secondary": "#8FBC8F"
-    },
-    "logo_style": "minimalist",
-    "typography": {
-      "primary_font": "Roboto",
-      "secondary_font": "Lora"
-    }
-  },
-  "regenerate_dependent_assets": true,
-  "preserve_brand_consistency": true,
-  "modification_scope": ["business_cards", "letterhead", "social_media_kit"],
-  "preview_before_commit": true
-}`}
-              language="json"
-              id="mix-match-request"
-              title="Request Body"
-            />
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Response</h2>
-            <ResponseBlock response={`{
-  "modification_id": "mod_ghi123",
-  "status": "preview_ready",
-  "modified_assets": {
-    "color_palette": {
-      "primary": "#1E5F3F",
-      "secondary": "#8FBC8F",
-      "harmony_score": 0.91
-    },
-    "affected_components": ["logos", "business_cards", "social_media_templates"],
-    "preview_urls": {
-      "logo_primary": "https://preview.1base.io/mod_ghi123/logo_primary.png",
-      "business_card": "https://preview.1base.io/mod_ghi123/business_card.png"
-    }
-  },
-  "consistency_check": {
-    "brand_alignment_score": 0.88,
-    "warnings": [],
-    "recommendations": ["Consider adjusting secondary color brightness for better contrast"]
-  },
-  "credits_used": 20
-}`} />
-          </div>
-        );
-
-      case 'create-sandbox':
-        return (
-          <div className="max-w-4xl">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">Create Sandbox Environment</h1>
-            
-            <p className="text-lg text-gray-600 mb-8">
-              Set up a risk-free experimentation space with version control and comparison tools. 
-              Perfect for testing seasonal campaigns, market-specific adaptations, or exploring creative directions.
-            </p>
-
-            <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-8">
-              <h3 className="text-lg font-semibold text-purple-800 mb-2">Endpoint</h3>
-              <code className="text-purple-900 font-mono text-lg">POST /playground/create</code>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Available Experiment Scopes</h2>
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• <code>colors</code> - Color palette modifications</li>
-                  <li>• <code>typography</code> - Font and text styling changes</li>
-                  <li>• <code>logo_style</code> - Logo variations and styling</li>
-                </ul>
-              </div>
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• <code>tone</code> - Brand voice and messaging adjustments</li>
-                  <li>• <code>imagery_style</code> - Visual style and photo treatment</li>
-                  <li>• <code>layout</code> - Composition and spacing modifications</li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Request</h2>
-            <CodeBlock 
-              code={`{
-  "base_brand_id": "universe_xyz789",
-  "playground_name": "Summer Campaign 2024 Test",
-  "experiment_scope": ["colors", "typography", "tone", "imagery_style"],
-  "session_duration": 168,
-  "collaboration_enabled": true,
-  "experiment_goals": [
-    "Test warmer color palette for summer season",
-    "Explore more playful typography for younger demographic",
-    "Adjust tone for social media campaigns"
-  ],
-  "target_applications": ["social_media", "digital_ads", "seasonal_packaging"]
-}`}
-              language="json"
-              id="sandbox-request"
-              title="Request Body"
-            />
-          </div>
-        );
-
-      case 'javascript-sdk':
-        return (
-          <div className="max-w-4xl">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">JavaScript SDK</h1>
-            
-            <p className="text-lg text-gray-600 mb-8">
-              The official JavaScript SDK for 1base API, compatible with Node.js and modern browsers.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Installation</h2>
-            <CodeBlock 
-              code="npm install @1base/sdk"
-              language="bash"
-              id="js-install"
-              title="npm"
-            />
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Quick Start</h2>
-            <CodeBlock 
-              code={`import { OneBaseClient } from '@1base/sdk';
-
-const client = new OneBaseClient({
-  apiKey: process.env.ONEBASE_API_KEY,
-  environment: 'production' // or 'sandbox'
-});
-
-// Generate brand DNA
-const brandDNA = await client.brandDNA.generate({
-  businessName: 'Acme Coffee Co.',
-  industry: 'food_beverage',
-  targetAudience: 'urban millennials aged 25-35',
-  brandValues: ['sustainability', 'community', 'quality'],
-  businessDescription: 'Artisanal coffee roaster focused on direct trade relationships.'
-});
-
-console.log('Brand DNA ID:', brandDNA.brand_dna_id);
-
-// Check status
-const status = await client.brandDNA.getStatus(brandDNA.brand_dna_id);
-console.log('Status:', status.status);`}
-              language="javascript"
-              id="js-quickstart"
-              title="JavaScript Example"
-            />
-          </div>
-        );
-
-      case 'error-codes':
-        return (
-          <div className="max-w-4xl">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">Error Codes</h1>
-            
-            <p className="text-lg text-gray-600 mb-8">
-              Understanding API error responses and how to handle them in your application.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">HTTP Status Codes</h2>
-            <div className="space-y-4 mb-8">
-              <div className="border border-green-200 bg-green-50 rounded-lg p-4">
-                <h3 className="font-semibold text-green-800 mb-2">200 OK</h3>
-                <p className="text-green-700">The request was successful.</p>
-              </div>
-              <div className="border border-yellow-200 bg-yellow-50 rounded-lg p-4">
-                <h3 className="font-semibold text-yellow-800 mb-2">400 Bad Request</h3>
-                <p className="text-yellow-700">The request was invalid or malformed.</p>
-              </div>
-              <div className="border border-red-200 bg-red-50 rounded-lg p-4">
-                <h3 className="font-semibold text-red-800 mb-2">401 Unauthorized</h3>
-                <p className="text-red-700">Invalid or missing API key.</p>
-              </div>
-              <div className="border border-red-200 bg-red-50 rounded-lg p-4">
-                <h3 className="font-semibold text-red-800 mb-2">429 Too Many Requests</h3>
-                <p className="text-red-700">Rate limit exceeded. Check the Retry-After header.</p>
-              </div>
-              <div className="border border-gray-200 bg-gray-50 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-800 mb-2">500 Internal Server Error</h3>
-                <p className="text-gray-700">An error occurred on our servers. Please try again later.</p>
-              </div>
-            </div>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Error Response Format</h2>
-            <ResponseBlock response={`{
-  "error": {
-    "code": "INVALID_INDUSTRY",
-    "message": "The specified industry 'invalid_industry' is not supported. Please choose from the supported industries list.",
-    "details": {
-      "parameter": "industry",
-      "provided_value": "invalid_industry",
-      "supported_values": ["technology", "healthcare", "finance", "..."]
-    },
-    "request_id": "req_abc123"
-  }
-}`} title="Error Response Example" />
-          </div>
-        );
-
+      // Add default case and close the switch statement
       default:
         return (
           <div className="max-w-4xl">
@@ -792,10 +370,419 @@ console.log('Status:', status.status);`}
   };
 
   return (
-    <div className="h-full bg-white">
-      <div className="max-w-7xl mx-auto px-6 py-8 h-full">
+    <div className="flex-1 overflow-auto bg-white">
+      <div className="max-w-7xl mx-auto px-6 py-8">
         {renderContent()}
       </div>
+    </div>
+  );
+};
+
+export default ApiContent;
+              <h3 className="text-lg font-semibold mb-4">See where we're live</h3>
+              <CodeBlock 
+                code={`curl -X GET "https://api.1base.ai/v1/status" \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json"`}
+                language="bash"
+                id="status-check"
+              />
+              <p className="text-gray-300 text-sm mt-2">
+                Check our API status and availability across different regions.
+              </p>
+            </div>
+          </div>
+        );
+
+      case 'quick-start':
+        return (
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">Quick Start Guide</h1>
+            <p className="text-lg text-gray-600 mb-8">
+              Get up and running with 1base API in minutes. Follow these simple steps to make your first API call.
+            </p>
+
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Get Your API Key</h2>
+                <p className="text-gray-600 mb-4">
+                  First, you'll need to obtain an API key from your 1base dashboard.
+                </p>
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                  <p className="text-yellow-800 text-sm">
+                    <strong>Note:</strong> Keep your API key secure and never expose it in client-side code.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Make Your First Request</h2>
+                <p className="text-gray-600 mb-4">
+                  Here's how to generate a brand name using our API:
+                </p>
+                <CodeBlock 
+                  code={`// JavaScript Example
+const response = await fetch('https://api.1base.ai/v1/names/generate', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    industry: 'technology',
+    style: 'modern',
+    length: 'short'
+  })
+});
+
+const data = await response.json();
+console.log(data.names);`}
+                  language="javascript"
+                  id="first-request"
+                />
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Handle the Response</h2>
+                <p className="text-gray-600 mb-4">
+                  The API will return a JSON response with generated names:
+                </p>
+                <CodeBlock 
+                  code={`{
+  "success": true,
+  "names": [
+    "TechFlow",
+    "NexusCore",
+    "ByteForge",
+    "CodeStream",
+    "DataVault"
+  ],
+  "metadata": {
+    "industry": "technology",
+    "style": "modern",
+    "generated_at": "2024-08-02T10:30:00Z"
+  }
+}`}
+                  language="json"
+                  id="response-example"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'authentication':
+        return (
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">Authentication</h1>
+            <p className="text-lg text-gray-600 mb-8">
+              1base API uses API keys for authentication. Include your API key in the Authorization header of every request.
+            </p>
+
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">API Key Authentication</h2>
+                <p className="text-gray-600 mb-4">
+                  Include your API key in the Authorization header using the Bearer token format:
+                </p>
+                <CodeBlock 
+                  code={`Authorization: Bearer sk_1base_your_api_key_here`}
+                  language="http"
+                  id="auth-header"
+                />
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Error Responses</h2>
+                <p className="text-gray-600 mb-4">
+                  If authentication fails, you'll receive a 401 Unauthorized response:
+                </p>
+                <CodeBlock 
+                  code={`{
+  "error": {
+    "code": "unauthorized",
+    "message": "Invalid API key provided",
+    "type": "authentication_error"
+  }
+}`}
+                  language="json"
+                  id="auth-error"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'generate-names':
+        return (
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">Generate Names</h1>
+            <p className="text-lg text-gray-600 mb-8">
+              Generate creative and brandable names for your business using AI-powered algorithms.
+            </p>
+
+            <div className="space-y-8">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium mr-3">POST</span>
+                  /v1/names/generate
+                </h3>
+                <p className="text-gray-600">Generate brand names based on your criteria</p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Request Parameters</h2>
+                <div className="overflow-x-auto">
+                  <table className="w-full border border-gray-200 rounded-lg">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Parameter</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Type</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Required</th>
+                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      <tr>
+                        <td className="px-4 py-3 text-sm font-mono">industry</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">string</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">Yes</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">Target industry (e.g., "technology", "healthcare")</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="px-4 py-3 text-sm font-mono">style</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">string</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">No</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">Name style: "modern", "classic", "creative"</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm font-mono">length</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">string</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">No</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">Name length: "short", "medium", "long"</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="px-4 py-3 text-sm font-mono">count</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">integer</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">No</td>
+                        <td className="px-4 py-3 text-sm text-gray-600">Number of names to generate (1-20, default: 10)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Request</h2>
+                <CodeBlock 
+                  code={`curl -X POST "https://api.1base.ai/v1/names/generate" \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "industry": "technology",
+    "style": "modern",
+    "length": "short",
+    "count": 5
+  }'`}
+                  language="bash"
+                  id="generate-names-request"
+                />
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Response</h2>
+                <CodeBlock 
+                  code={`{
+  "success": true,
+  "names": [
+    {
+      "name": "TechFlow",
+      "availability": "available",
+      "domain": "techflow.com",
+      "score": 0.95
+    },
+    {
+      "name": "NexusCore",
+      "availability": "available", 
+      "domain": "nexuscore.com",
+      "score": 0.92
+    }
+  ],
+  "metadata": {
+    "industry": "technology",
+    "style": "modern",
+    "generated_at": "2024-08-02T10:30:00Z",
+    "request_id": "req_abc123"
+  }
+}`}
+                  language="json"
+                  id="generate-names-response"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'generate-logo':
+        return (
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">Generate Logo</h1>
+            <p className="text-lg text-gray-600 mb-8">
+              Create professional logos using AI with customizable styles, colors, and formats.
+            </p>
+
+            <div className="space-y-8">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium mr-3">POST</span>
+                  /v1/logos/generate
+                </h3>
+                <p className="text-gray-600">Generate custom logos based on brand specifications</p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Request</h2>
+                <CodeBlock 
+                  code={`curl -X POST "https://api.1base.ai/v1/logos/generate" \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "brand_name": "TechFlow",
+    "industry": "technology",
+    "style": "modern",
+    "colors": ["#2563eb", "#ffffff"],
+    "format": "svg",
+    "variations": 3
+  }'`}
+                  language="bash"
+                  id="generate-logo-request"
+                />
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Example Response</h2>
+                <CodeBlock 
+                  code={`{
+  "success": true,
+  "logos": [
+    {
+      "id": "logo_123abc",
+      "url": "https://cdn.1base.ai/logos/logo_123abc.svg",
+      "format": "svg",
+      "dimensions": {
+        "width": 512,
+        "height": 256
+      },
+      "colors": ["#2563eb", "#ffffff"],
+      "style": "modern"
+    }
+  ],
+  "metadata": {
+    "brand_name": "TechFlow",
+    "generated_at": "2024-08-02T10:30:00Z",
+    "request_id": "req_logo_456"
+  }
+}`}
+                  language="json"
+                  id="generate-logo-response"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'client-libraries':
+        return (
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">Client Libraries</h1>
+            <p className="text-lg text-gray-600 mb-8">
+              Official SDKs and client libraries to integrate 1base API into your applications.
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* JavaScript */}
+              <div className="bg-white border border-gray-200 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <span className="text-yellow-600 font-bold">JS</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">JavaScript</h3>
+                    <p className="text-sm text-gray-500">Node.js & Browser</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-4">
+                  A powerful, type-safe JavaScript library with full TypeScript support and promise-based API.
+                </p>
+                <CodeBlock 
+                  code={`npm install @1base/sdk`}
+                  language="bash"
+                  id="js-install"
+                />
+              </div>
+
+              {/* Python */}
+              <div className="bg-white border border-gray-200 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <span className="text-blue-600 font-bold">Py</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Python</h3>
+                    <p className="text-sm text-gray-500">Python 3.7+</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-4">
+                  A Pythonic SDK with async support, comprehensive error handling, and built-in retry logic.
+                </p>
+                <CodeBlock 
+                  code={`pip install onebase-sdk`}
+                  language="bash"
+                  id="py-install"
+                />
+              </div>
+
+              {/* PHP */}
+              <div className="bg-white border border-gray-200 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <span className="text-purple-600 font-bold">PHP</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">PHP</h3>
+                    <p className="text-sm text-gray-500">PHP 7.4+</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-4">
+                  A modern PHP library with PSR-7 compliance, dependency injection support, and comprehensive documentation.
+                </p>
+                <CodeBlock 
+                  code={`composer require onebase/sdk`}
+                  language="bash"
+                  id="php-install"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return (
+          <div className="text-center py-12">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              Documentation for {selectedSection}
+            </h2>
+            <p className="text-gray-600">
+              Detailed documentation for this section is coming soon.
+            </p>
+          </div>
+        );
+    }
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto px-6 py-8">
+      {renderContent()}
     </div>
   );
 };

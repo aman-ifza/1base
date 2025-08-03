@@ -40,6 +40,7 @@ import BuildGuide from './Pages/BuildGuide';
 import CanvasGuide from './Pages/CanvasGuide';
 import InspirationView from './Pages/InspirationView';
 import BrandPreview from './Pages/BrandPreview';
+import BrandTone from './Pages/BrandTone';
 
 function App() {
   return (
@@ -56,7 +57,7 @@ function App() {
           <Route path="/typography" element={<Typography />} />
           <Route path="/typography/view" element={<TypographyView />} />
           <Route path="/typography/preview/:templateId" element={<TypographyPreviewPage />} />
-          <Route path="/tone" element={<Build />} /> {/* Tone uses Build layout */}
+          <Route path="/tone" element={<BrandTone />} />
           <Route path="/logo" element={<Logo />} />
           <Route path="/canvas" element={<Canvas />} />
           <Route path="/inspiration" element={<Inspiration />} />

@@ -4,20 +4,24 @@ import ApiContent from '../components/ApiContent';
 import ApiHeader from '../components/ApiHeader';
 
 const ApiDocs = () => {
-  const [selectedSection, setSelectedSection] = useState('getting-started');
+  const [selectedSection, setSelectedSection] = useState('overview');
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="h-screen bg-gray-50 flex">
       {/* API Sidebar */}
-      <ApiSidebar 
-        selectedSection={selectedSection}
-        onSectionSelect={setSelectedSection}
-      />
+      <div className="flex-shrink-0">
+        <ApiSidebar 
+          selectedSection={selectedSection}
+          onSectionSelect={setSelectedSection}
+        />
+      </div>
       
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col h-screen">
         {/* Header */}
-        <ApiHeader />
+        <div className="flex-shrink-0">
+          <ApiHeader />
+        </div>
         
         {/* Content */}
         <div className="flex-1 overflow-auto">

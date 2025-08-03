@@ -18,103 +18,55 @@ const ApiSidebar = ({ selectedSection, onSectionSelect }) => {
   const menuItems = [
     {
       id: 'getting-started',
-      label: 'Getting started',
+      label: 'Getting Started',
       icon: BookOpen,
       children: [
-        { id: 'introduction', label: 'Introduction' },
-        { id: 'quick-start', label: 'Quick Start' },
-        { id: 'authentication', label: 'Authentication' }
+        { id: 'overview', label: 'Overview' },
+        { id: 'authentication', label: 'Authentication' },
+        { id: 'rate-limits', label: 'Rate Limits' },
+        { id: 'request-response', label: 'Request/Response Format' }
       ]
     },
     {
-      id: 'brand',
-      label: 'Brand',
+      id: 'brand-dna',
+      label: 'Brand DNA Generation',
       icon: Palette,
       children: [
-        { id: 'create-brand', label: 'Create Brand' },
-        { id: 'get-brand', label: 'Get Brand' },
-        { id: 'update-brand', label: 'Update Brand' },
-        { id: 'delete-brand', label: 'Delete Brand' }
+        { id: 'generate-brand-dna', label: 'Generate Brand DNA' },
+        { id: 'get-brand-dna-status', label: 'Get Brand DNA Status' }
       ]
     },
     {
-      id: 'name',
-      label: 'Name',
-      icon: Type,
-      children: [
-        { id: 'generate-names', label: 'Generate Names' },
-        { id: 'validate-name', label: 'Validate Name' },
-        { id: 'check-availability', label: 'Check Availability' }
-      ]
-    },
-    {
-      id: 'logo',
-      label: 'Logo',
+      id: 'brand-assets',
+      label: 'Brand Asset Generation',
       icon: Image,
       children: [
-        { id: 'generate-logo', label: 'Generate Logo' },
-        { id: 'customize-logo', label: 'Customize Logo' },
-        { id: 'download-logo', label: 'Download Logo' }
+        { id: 'generate-brand-universe', label: 'Generate Complete Brand Universe' },
+        { id: 'mix-match-assets', label: 'Mix & Match Assets' }
       ]
     },
     {
-      id: 'inspiration',
-      label: 'Inspiration',
+      id: 'brand-playground',
+      label: 'Brand Playground',
       icon: Zap,
       children: [
-        { id: 'get-templates', label: 'Get Templates' },
-        { id: 'template-categories', label: 'Template Categories' },
-        { id: 'trending-designs', label: 'Trending Designs' }
+        { id: 'create-sandbox', label: 'Create Sandbox Environment' }
       ]
     },
     {
-      id: 'canvas',
-      label: 'Canvas',
+      id: 'sdks',
+      label: 'SDKs & Libraries',
       icon: Code2,
       children: [
-        { id: 'create-canvas', label: 'Create Canvas' },
-        { id: 'drawing-tools', label: 'Drawing Tools' },
-        { id: 'ai-generation', label: 'AI Generation' }
+        { id: 'javascript-sdk', label: 'JavaScript SDK' }
       ]
     },
     {
-      id: 'chat',
-      label: 'Chat',
-      icon: MessageSquare,
-      children: [
-        { id: 'send-message', label: 'Send Message' },
-        { id: 'get-responses', label: 'Get Responses' },
-        { id: 'chat-history', label: 'Chat History' }
-      ]
-    },
-    {
-      id: 'core-resources',
-      label: 'Core Resources',
-      icon: Database,
-      children: [
-        { id: 'endpoints', label: 'API Endpoints' },
-        { id: 'rate-limits', label: 'Rate Limits' },
-        { id: 'webhooks', label: 'Webhooks' }
-      ]
-    },
-    {
-      id: 'authentication',
-      label: 'Authentication',
-      icon: Shield,
-      children: [
-        { id: 'api-keys', label: 'API Keys' },
-        { id: 'oauth', label: 'OAuth 2.0' },
-        { id: 'jwt-tokens', label: 'JWT Tokens' }
-      ]
-    },
-    {
-      id: 'support',
-      label: 'Support',
+      id: 'errors',
+      label: 'Error Handling',
       icon: HelpCircle,
       children: [
-        { id: 'faq', label: 'FAQ' },
-        { id: 'contact', label: 'Contact Support' },
-        { id: 'status', label: 'API Status' }
+        { id: 'error-codes', label: 'Error Codes' }
       ]
     }
   ];
@@ -130,10 +82,12 @@ const ApiSidebar = ({ selectedSection, onSectionSelect }) => {
   };
 
   return (
-    <div className="w-80 bg-slate-900 text-white h-screen overflow-y-auto">
-      <div className="p-6">
+    <div className="w-80 bg-slate-900 text-white h-screen flex flex-col">
+      <div className="p-6 flex-shrink-0">
         <h2 className="text-sm font-medium text-gray-300 mb-4">API Documentation</h2>
-        
+      </div>
+      
+      <div className="flex-1 overflow-y-auto px-6 pb-6">
         <nav className="space-y-1">
           {menuItems.map((item) => {
             const Icon = item.icon;

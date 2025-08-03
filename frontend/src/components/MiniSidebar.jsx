@@ -48,7 +48,7 @@ const MiniSidebar = () => {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Enter your company name"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
                 />
               </div>
 
@@ -60,15 +60,15 @@ const MiniSidebar = () => {
                 <select
                   value={industry}
                   onChange={(e) => setIndustry(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white text-gray-900"
                 >
-                  <option value="">Select industry</option>
-                  <option value="technology">Technology</option>
-                  <option value="healthcare">Healthcare</option>
-                  <option value="finance">Finance</option>
-                  <option value="retail">Retail</option>
-                  <option value="education">Education</option>
-                  <option value="manufacturing">Manufacturing</option>
+                  <option value="" className="text-gray-500">Select industry</option>
+                  <option value="technology" className="text-gray-900">Technology</option>
+                  <option value="healthcare" className="text-gray-900">Healthcare</option>
+                  <option value="finance" className="text-gray-900">Finance</option>
+                  <option value="retail" className="text-gray-900">Retail</option>
+                  <option value="education" className="text-gray-900">Education</option>
+                  <option value="manufacturing" className="text-gray-900">Manufacturing</option>
                 </select>
               </div>
 
@@ -82,7 +82,7 @@ const MiniSidebar = () => {
                   onChange={(e) => setBrandDescription(e.target.value)}
                   placeholder="Describe your brand personality, values, and target audience..."
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none bg-white text-gray-900 placeholder-gray-500"
                 />
               </div>
 
@@ -117,7 +117,7 @@ const MiniSidebar = () => {
                         type="text"
                         value={selectedColor}
                         onChange={(e) => setSelectedColor(e.target.value)}
-                        className="w-20 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                        className="w-20 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 bg-white text-gray-900"
                       />
                       <span className="text-sm text-gray-600">100%</span>
                     </div>

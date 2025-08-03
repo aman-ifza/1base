@@ -159,11 +159,11 @@ const RightMiniSidebar = () => {
                 Model
               </button>
               {expandedDropdown === 'model' && (
-                <div className="mt-2 bg-gray-50 rounded-lg border border-gray-200 max-h-40 overflow-y-auto">
+                <div className="mt-2 bg-white rounded-lg border border-gray-200 max-h-40 overflow-y-auto shadow-lg">
                   {models.map((model, index) => (
                     <button
                       key={index}
-                      className="w-full text-left px-3 py-2 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-150 text-sm"
+                      className="w-full text-left px-3 py-2 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-150 text-sm text-gray-900 border-b border-gray-100 last:border-b-0"
                     >
                       {model}
                     </button>
@@ -181,11 +181,11 @@ const RightMiniSidebar = () => {
                 Prompt Enhance
               </button>
               {expandedDropdown === 'prompt' && (
-                <div className="mt-2 bg-gray-50 rounded-lg border border-gray-200 max-h-40 overflow-y-auto">
+                <div className="mt-2 bg-white rounded-lg border border-gray-200 max-h-40 overflow-y-auto shadow-lg">
                   {promptEnhancements.map((enhancement, index) => (
                     <button
                       key={index}
-                      className="w-full text-left px-3 py-2 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-150 text-sm"
+                      className="w-full text-left px-3 py-2 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-150 text-sm text-gray-900 border-b border-gray-100 last:border-b-0"
                     >
                       {enhancement}
                     </button>
@@ -203,11 +203,11 @@ const RightMiniSidebar = () => {
                 Templates
               </button>
               {expandedDropdown === 'templates' && (
-                <div className="mt-2 bg-gray-50 rounded-lg border border-gray-200 max-h-48 overflow-y-auto">
+                <div className="mt-2 bg-white rounded-lg border border-gray-200 max-h-48 overflow-y-auto shadow-lg">
                   {templates.map((template, index) => (
                     <button
                       key={index}
-                      className="w-full flex items-center space-x-3 px-3 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-150 text-sm border-b border-gray-100 last:border-b-0"
+                      className="w-full flex items-center space-x-3 px-3 py-3 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-150 text-sm border-b border-gray-100 last:border-b-0 text-gray-900"
                     >
                       <div className="flex-shrink-0">{template.preview}</div>
                       <span className="text-left">{template.name}</span>

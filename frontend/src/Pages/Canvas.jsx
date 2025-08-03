@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Sidebar from '../components/Sidebar';
-import DrawCompare from '../components/DrawCompare';
-import DrawingMiniSidebar from '../components/DrawingMiniSidebar';
+import DrawingCanvas from '../components/DrawingCanvas';
+import PaintToolsSidebar from '../components/PaintToolsSidebar';
 import InputOutputToggle from '../components/InputOutput';
 import PromptBar from '../components/PromptBar';
 
 const Canvas = () => {
   const [selectedInputOutput, setSelectedInputOutput] = useState('Input');
-  const [selectedTool, setSelectedTool] = useState(null);
-
-  const handleToolSelect = (toolId) => {
-    setSelectedTool(toolId);
-    console.log(`Selected tool: ${toolId}`);
-  };
+  
+  // Drawing states
+  const [currentColor, setCurrentColor] = useState('#000000');
+  const [brushSize, setBrushSize] = useState(5);
+  const [isEraser, setIsEraser] = useState(false);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const canvasRef = useRef(null);
 
   const handleInputOutputToggle = (selection) => {
     setSelectedInputOutput(selection);
@@ -24,16 +25,23 @@ const Canvas = () => {
     // Here you would typically send the prompt to your AI service
   };
 
+  const handleClearCanvas = () => {
+    if (canvasRef.current) {
+      canvasRef.current.clearCanvas();
+    }
+  };
+
+  const handleDownloadCanvas = () => {
+    if (canvasRef.current) {
+      canvasRef.current.downloadCanvas();
+    }
+  };
+
   return (
     <div className="h-screen flex relative overflow-hidden">
       {/* Left Sidebar */}
       <div className="flex-shrink-0 z-10 relative">
         <Sidebar />
-        
-        {/* Drawing Tools Mini Sidebar - Positioned relative to sidebar */}
-        <div className="absolute left-full top-1/2 -translate-y-1/2 ml-4 z-20">
-          <DrawingMiniSidebar onToolSelect={handleToolSelect} />
-        </div>
       </div>
       
       {/* Input/Output Toggle */}
@@ -46,8 +54,29 @@ const Canvas = () => {
       <div className="flex-1 flex flex-col h-full">
         {/* Canvas Container - Takes remaining space, accounting for prompt bar */}
         <div className="flex-1 flex items-center justify-center pb-24">
-          <DrawCompare />
+          <DrawingCanvas 
+            ref={canvasRef}
+            currentColor={currentColor}
+            brushSize={brushSize}
+            isEraser={isEraser}
+            isDrawing={isDrawing}
+            setIsDrawing={setIsDrawing}
+          />
         </div>
+      </div>
+      
+      {/* Right Paint Tools Sidebar */}
+      <div className="flex-shrink-0 z-10">
+        <PaintToolsSidebar 
+          currentColor={currentColor}
+          setCurrentColor={setCurrentColor}
+          brushSize={brushSize}
+          setBrushSize={setBrushSize}
+          isEraser={isEraser}
+          setIsEraser={setIsEraser}
+          onClearCanvas={handleClearCanvas}
+          onDownloadCanvas={handleDownloadCanvas}
+        />
       </div>
       
       {/* Bottom Prompt Bar - Fixed at bottom of page */}
@@ -56,15 +85,6 @@ const Canvas = () => {
           <PromptBar onSubmit={handlePromptSubmit} />
         </div>
       </div>
-      
-      {/* Status Indicator */}
-      {selectedTool && (
-        <div className="fixed top-20 right-6 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg z-30">
-          <p className="text-sm text-gray-700">
-            Active Tool: <span className="font-semibold capitalize">{selectedTool}</span>
-          </p>
-        </div>
-      )}
       
       {/* Canvas Info */}
       <div className="fixed bottom-28 right-6 bg-black/70 backdrop-blur-sm text-white text-sm px-3 py-2 rounded-lg z-30">

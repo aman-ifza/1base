@@ -39,24 +39,24 @@ const GuidePage = () => {
         const cardData = [
             {
                 type: 'right',
-                title: "BUILD GUIDE",
-                description: "Learn how to create a comprehensive brand identity system that resonates with your audience and stands out in the market.",
+                title: "FAST TRACK YOUR BRAND SETUP",
+                description: "Define your brand's identity with tailored tools to align visuals, tone, and mission all in one place.",
                 buttonText: "START BUILDING",
                 image: Build,
                 route: '/guide/build'
             },
             {
                 type: 'left',
-                title: "TYPOGRAPHY GUIDE",
-                description: "Master the art of typography selection for your brand. Learn how to choose fonts that align with your brand personality and create visual hierarchy.",
+                title: "Typography",
+                description: "Choose and customize brand fonts to ensure consistent and impactful text styling across all assets.",
                 buttonText: "LEARN TYPOGRAPHY",
                 image: typography,
                 route: '/guide/typography'
             },
             {
                 type: 'right',
-                title: "CANVAS GUIDE",
-                description: "Unlock the full potential of our design canvas with advanced techniques, shortcuts, and best practices to create stunning designs efficiently.",
+                title: "Canvas",
+                description: "Design freely or start with smart layouts the canvas adapts to your brand guidelines automatically.",
                 buttonText: "MASTER CANVAS",
                 image: canvas,
                 route: '/guide/canvas'

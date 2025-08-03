@@ -16,48 +16,48 @@ const Body = () => {
   const cardData = [
     {
       type: 'right',
-      title: "CUSTOMER ENGAGEMENT",
-      description: "Build stronger relationships with your customers through personalized engagement tools. Create meaningful interactions that drive loyalty and business growth.",
+      title: "FAST TRACK YOUR BRAND SETUP",
+      description: "Define your brand's identity with tailored tools to align visuals, tone, and mission all in one place.",
       buttonText: "ENGAGE CUSTOMERS",
       image: Build,
       route: '/build'
     },
     {
       type: 'left',
-      title: "BRAND IDENTITY CREATION",
-      description: "Create a distinctive brand identity that sets you apart from competitors. Our tools help you develop a unique voice and visual style that resonates with your target audience.",
+      title: "Typography",
+      description: "Choose and customize brand fonts to ensure consistent and impactful text styling across all assets.",
       buttonText: "EXPLORE TYPOGRAPHY",
       image: typography,
       route: '/typography/view'
     },
     {
       type: 'right',
-      title: "MARKETING AUTOMATION",
-      description: "Streamline your marketing efforts with powerful automation tools. Schedule posts, analyze performance, and engage with your audience across multiple platforms effortlessly.",
+      title: "Canvas",
+      description: "Design freely or start with smart layouts the canvas adapts to your brand guidelines automatically.",
       buttonText: "START AUTOMATING",
       image: canvas,
       route: '/canvas'
     },
     {
       type: 'left',
-      title: "LOGO DESIGN",
-      description: "Create stunning, professional logos that capture your brand's essence. Our AI-powered design tools help you craft memorable visual identities that make lasting impressions.",
+      title: "Logo",
+      description: "Create your own unique logo with our easy-to-use design tool. Choose from a variety of icons, fonts, and colors, then customize every detail to match your brand's personality.",
       buttonText: "DESIGN LOGOS",
       image: logo,
       route: '/logo'
     },
     {
       type: 'right',
-      title: "CREATIVE INSPIRATION",
-      description: "Discover endless design possibilities with our curated inspiration gallery. Explore trending styles, color palettes, and layouts to spark your creative vision.",
+      title: "Inspiration",
+      description: "Explore curated designs and content ideas to spark creativity and keep your branding fresh.",
       buttonText: "GET INSPIRED",
       image: inspiration,
       route: '/inspiration'
     },
     {
       type: 'left',
-      title: "API INTEGRATION",
-      description: "Seamlessly integrate our powerful branding tools into your applications. Access our comprehensive API to build custom solutions and automate your design workflow.",
+      title: "API",
+      description: "Integrate our features seamlessly into your own apps with our robust and easy-to-use API. Access logo generation, customization, and asset management automate your workflow and build at scale with complete flexibility.",
       buttonText: "EXPLORE API",
       image: api,
       route: '/api'
