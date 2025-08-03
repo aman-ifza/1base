@@ -2,17 +2,20 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   ChevronLeft,
-  ChevronRight,
-  Hammer,
-  Type,
-  Volume2,
-  Zap,
-  Palette,
-  Lightbulb,
-  Users,
-  BookOpen,
-  Code
+  ChevronRight
 } from 'lucide-react';
+
+// Import sidebar logos
+import buildIcon from '../Sidebar Logos/build.png';
+import nameIcon from '../Sidebar Logos/Name.png';
+import typographyIcon from '../Sidebar Logos/typography.png';
+import toneIcon from '../Sidebar Logos/tone.png';
+import logoIcon from '../Sidebar Logos/logo.png';
+import canvasIcon from '../Sidebar Logos/canvas.png';
+import inspirationIcon from '../Sidebar Logos/inspiration.png';
+import brandIcon from '../Sidebar Logos/brand.png';
+import guideIcon from '../Sidebar Logos/design.svg';
+import apiIcon from '../Sidebar Logos/api.png';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -21,16 +24,16 @@ const Sidebar = () => {
   const location = useLocation();
 
   const sidebarItems = useMemo(() => [
-    { name: 'Build', icon: Hammer, path: '/build' },
-    { name: 'Name', icon: Type, path: '/name' },
-    { name: 'Typography', icon: Type, path: '/typography' },
-    { name: 'Tone', icon: Volume2, path: '/tone' },
-    { name: 'Logo', icon: Zap, path: '/logo' },
-    { name: 'Canvas', icon: Palette, path: '/canvas' },
-    { name: 'Inspiration', icon: Lightbulb, path: '/inspiration' },
-    { name: 'My Brands', icon: Users, path: '/my-brands' },
-    { name: 'Guide', icon: BookOpen, path: '/guide' },
-    { name: 'API', icon: Code, path: '/api' }
+    { name: 'Build', icon: buildIcon, path: '/build' },
+    { name: 'Name', icon: nameIcon, path: '/name' },
+    { name: 'Typography', icon: typographyIcon, path: '/typography' },
+    { name: 'Tone', icon: toneIcon, path: '/tone' },
+    { name: 'Logo', icon: logoIcon, path: '/logo' },
+    { name: 'Canvas', icon: canvasIcon, path: '/canvas' },
+    { name: 'Inspiration', icon: inspirationIcon, path: '/inspiration' },
+    { name: 'My Brands', icon: brandIcon, path: '/my-brands' },
+    { name: 'Guide', icon: guideIcon, path: '/guide' },
+    { name: 'API', icon: apiIcon, path: '/api' }
   ], []);
 
   // Update active item based on current route
@@ -84,7 +87,7 @@ const Sidebar = () => {
 
       {/* Navigation Items */}
       <nav className="p-4 space-y-1">
-        {sidebarItems.map(({ name, icon: IconComponent, path }) => (
+        {sidebarItems.map(({ name, icon, path }) => (
           <button
             key={name}
             onClick={() => handleItemClick(name, path)}
@@ -94,7 +97,7 @@ const Sidebar = () => {
                 : 'text-black hover:bg-white/5 hover:text-zinc-700'
             }`}
           >
-            <IconComponent className="w-5 h-5 flex-shrink-0" />
+            <img src={icon} alt={name} className="w-5 h-5 flex-shrink-0" />
             {!isCollapsed && <span className="font-medium">{name}</span>}
           </button>
         ))}

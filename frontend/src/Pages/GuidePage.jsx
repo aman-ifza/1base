@@ -24,15 +24,6 @@ const GuidePage = () => {
                         <p className="text-sm md:text-base text-gray-200 leading-relaxed">
                             Welcome to your go-to resource for mastering brand creation with our platform. Whether you're starting fresh or refining your identity, our essential articles cover everything from logo design and typography to layout creation and brand inspiration. Designed for all skill levels, these clear, practical guides help you understand each tool, apply branding best practices, and build consistently — all while working on real projects.
                         </p>
-
-                        <div className="pt-2">
-                            <a
-                                href="#"
-                                className="inline-block px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm rounded-md transition duration-300"
-                            >
-                                GET STARTED →
-                            </a>
-                        </div>
                     </div>
                     
                     <div className="hidden md:block">
