@@ -45,7 +45,7 @@ const TemplateComponent = ({ imageUrl, title, onView, onExport, onBookmark, isBo
   return (
     <div className="relative w-full group rounded-2xl overflow-hidden bg-white shadow-lg hover:shadow-xl transition-all duration-300">
       {/* Image container */}
-      <div className="w-full h-[280px] overflow-hidden">
+      <div className="w-full h-[320px] overflow-hidden">
         {imageUrl ? (
           <img 
             src={imageUrl} 

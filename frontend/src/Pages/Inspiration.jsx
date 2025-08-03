@@ -3,6 +3,14 @@ import Sidebar from '../components/Sidebar';
 import TemplateSettings from '../components/TemplateSettings';
 import TemplateComponent from '../components/TemplateComponent';
 
+// Import template images
+import template1 from '../Template Images/template1.png';
+import template2 from '../Template Images/template2.png';
+import template3 from '../Template Images/template3.png';
+import template4 from '../Template Images/template4.png';
+import template5 from '../Template Images/template5.png';
+import template6 from '../Template Images/template6.png';
+
 const Inspiration = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStyle, setSelectedStyle] = useState('All');
@@ -13,122 +21,62 @@ const Inspiration = () => {
   const templateData = [
     {
       id: 1,
-      title: 'Productivity',
+      title: 'Template 1',
       category: 'Business',
       style: 'Modern',
       theme: 'Business',
-      imageUrl: '/src/assets/productivity-template.jpg',
-      description: 'Boost your daily workflow with organized layouts',
+      imageUrl: template1,
+      description: 'Professional business template design',
       isBookmarked: false
     },
     {
       id: 2,
-      title: 'Portfolio',
+      title: 'Template 2',
       category: 'Creative',
       style: 'Creative',
       theme: 'Design',
-      imageUrl: '/src/assets/portfolio-template.jpg',
-      description: 'Showcase your work with stunning visual layouts',
+      imageUrl: template2,
+      description: 'Creative portfolio showcase template',
       isBookmarked: true
     },
     {
       id: 3,
-      title: 'Marketing',
+      title: 'Template 3',
       category: 'Business',
       style: 'Bold',
       theme: 'Marketing',
-      imageUrl: '/src/assets/marketing-template.jpg',
-      description: 'Drive growth with compelling marketing materials',
+      imageUrl: template3,
+      description: 'Bold marketing campaign template',
       isBookmarked: false
     },
     {
       id: 4,
-      title: 'Presentation',
+      title: 'Template 4',
       category: 'Corporate',
       style: 'Professional',
       theme: 'Business',
-      imageUrl: '/src/assets/presentation-template.jpg',
-      description: 'Create impactful presentations that engage',
+      imageUrl: template4,
+      description: 'Professional corporate presentation',
       isBookmarked: false
     },
     {
       id: 5,
-      title: 'Technology',
+      title: 'Template 5',
       category: 'Tech',
       style: 'Modern',
       theme: 'Tech',
-      imageUrl: '/src/assets/technology-template.jpg',
-      description: 'Cutting-edge designs for tech companies',
+      imageUrl: template5,
+      description: 'Modern technology solution template',
       isBookmarked: true
     },
     {
       id: 6,
-      title: 'Agency',
+      title: 'Template 6',
       category: 'Creative',
       style: 'Creative',
       theme: 'Design',
-      imageUrl: '/src/assets/agency-template.jpg',
-      description: 'Professional agency and studio layouts',
-      isBookmarked: false
-    },
-    {
-      id: 7,
-      title: 'E-commerce',
-      category: 'Retail',
-      style: 'Modern',
-      theme: 'Retail',
-      imageUrl: '/src/assets/ecommerce-template.jpg',
-      description: 'Convert visitors with optimized store designs',
-      isBookmarked: false
-    },
-    {
-      id: 8,
-      title: 'Healthcare',
-      category: 'Medical',
-      style: 'Clean',
-      theme: 'Healthcare',
-      imageUrl: '/src/assets/healthcare-template.jpg',
-      description: 'Trust-building layouts for medical practices',
-      isBookmarked: false
-    },
-    {
-      id: 9,
-      title: 'Education',
-      category: 'Academic',
-      style: 'Classic',
-      theme: 'Education',
-      imageUrl: '/src/assets/education-template.jpg',
-      description: 'Engaging designs for educational content',
-      isBookmarked: true
-    },
-    {
-      id: 10,
-      title: 'Restaurant',
-      category: 'Food',
-      style: 'Elegant',
-      theme: 'Food',
-      imageUrl: '/src/assets/restaurant-template.jpg',
-      description: 'Appetizing layouts for food businesses',
-      isBookmarked: false
-    },
-    {
-      id: 11,
-      title: 'Real Estate',
-      category: 'Property',
-      style: 'Professional',
-      theme: 'Real Estate',
-      imageUrl: '/src/assets/realestate-template.jpg',
-      description: 'Luxury layouts for property showcases',
-      isBookmarked: false
-    },
-    {
-      id: 12,
-      title: 'Fitness',
-      category: 'Health',
-      style: 'Dynamic',
-      theme: 'Fitness',
-      imageUrl: '/src/assets/fitness-template.jpg',
-      description: 'Energetic designs for fitness brands',
+      imageUrl: template6,
+      description: 'Creative agency portfolio template',
       isBookmarked: false
     }
   ];
