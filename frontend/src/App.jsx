@@ -38,6 +38,8 @@ import TypographyPreviewPage from './Pages/TypographyPreviewPage';
 import TypographyGuide from './Pages/TypographyGuide';
 import BuildGuide from './Pages/BuildGuide';
 import CanvasGuide from './Pages/CanvasGuide';
+import InspirationView from './Pages/InspirationView';
+import BrandPreview from './Pages/BrandPreview';
 
 function App() {
   return (
@@ -58,7 +60,9 @@ function App() {
           <Route path="/logo" element={<Logo />} />
           <Route path="/canvas" element={<Canvas />} />
           <Route path="/inspiration" element={<Inspiration />} />
+          <Route path="/inspiration/view/:templateId" element={<InspirationView />} />
           <Route path="/my-brands" element={<MyBrands />} />
+          <Route path="/brand-preview" element={<BrandPreview />} />
           
           {/* Additional Pages */}
           <Route path="/guide" element={<GuidePage />} />

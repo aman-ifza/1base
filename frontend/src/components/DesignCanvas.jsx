@@ -5,6 +5,8 @@ const DesignCanvas = () => {
   const [showGrid, setShowGrid] = useState(true);
   const [zoom, setZoom] = useState(100);
   const [selectedTool, setSelectedTool] = useState('select');
+  
+  // Text elements state
   const [textElements, setTextElements] = useState([
     {
       id: 1,
@@ -28,6 +30,7 @@ const DesignCanvas = () => {
       isSelected: false
     }
   ]);
+
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isEditing, setIsEditing] = useState(null);

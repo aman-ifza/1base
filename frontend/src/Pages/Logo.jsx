@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import TemplateSettings from '../components/TemplateSettings';
 import LogoCard from '../components/LogoCard';
@@ -12,6 +13,7 @@ import logo5 from '../Logo Card Images/logo5.png';
 import logo6 from '../Logo Card Images/logo6.png';
 
 const Logo = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStyle, setSelectedStyle] = useState('All');
   const [selectedTheme, setSelectedTheme] = useState('All');
@@ -158,6 +160,17 @@ const Logo = () => {
     return matchesSearch && matchesStyle && matchesTheme;
   });
 
+  // Handle edit logo functionality
+  const handleEditLogo = () => {
+    // Navigate to logo editor
+    navigate('/logo-editor');
+  };
+
+  const handleExportLogo = (logoName) => {
+    console.log(`Export logo: ${logoName}`);
+    // Handle export functionality
+  };
+
   return (
     <div className="min-h-screen flex">
       {/* Left Sidebar */}
@@ -196,8 +209,8 @@ const Logo = () => {
                     logoType={logo.logoType}
                     logoImage={logo.logoImage}
                     textColor={logo.textColor}
-                    onEdit={() => console.log(`Edit logo: ${logo.name}`)}
-                    onExport={() => console.log(`Export logo: ${logo.name}`)}
+                    onEdit={() => handleEditLogo()}
+                    onExport={() => handleExportLogo(logo.name)}
                   />
                 ))}
               </div>

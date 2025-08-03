@@ -2,27 +2,32 @@ import React from 'react';
 import Sidebar from '../components/Sidebar';
 import Brand from '../components/Brand';
 
+// Import brand images from additional images folder
+import baseImage from '../additional images/1base.png';
+import nvidiaImage from '../additional images/nvidia.png';
+import appleImage from '../additional images/apple.png';
+
 const MyBrands = () => {
   const brandData = [
     {
       id: 1,
       name: "1base",
       description: "Created via 1BASE",
-      logo: "/src/assets/base.png",
+      logo: baseImage,
       backgroundColor: "from-blue-600 to-gray-800"
     },
     {
       id: 2,
       name: "Nvidia",
       description: "Created via 1BASE",
-      logo: "/src/assets/nvidia-logo.png",
+      logo: nvidiaImage,
       backgroundColor: "from-green-600 to-gray-800"
     },
     {
       id: 3,
       name: "Apple",
       description: "Created via 1BASE",
-      logo: "/src/assets/apple-logo.png",
+      logo: appleImage,
       backgroundColor: "from-gray-800 to-black"
     }
   ];
@@ -38,10 +43,10 @@ const MyBrands = () => {
       <div className="flex-1 flex flex-col overflow-hidden">
         
         {/* Scrollable Brand Cards Container with Glass Background */}
-        <div className="flex-1 overflow-y-auto p-8 pt-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl">
-              <div className="space-y-8">
+        <div className="flex-1 overflow-y-auto p-8 pt-16 pb-16 flex items-center justify-center">
+          <div className="max-w-6xl w-full">
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-xl">
+              <div className="space-y-10">
                 {brandData.map((brand) => (
                   <Brand 
                     key={brand.id}

@@ -120,7 +120,7 @@ const TemplatePreview = ({ templateImage = null }) => {
   );
 
   return (
-    <div className="max-w-5xl mx-auto h-screen flex flex-col bg-gray-800/10 backdrop-blur-md rounded-lg border border-gray-200/20 shadow-xl mt-8">
+    <div className="w-full mx-auto h-screen flex flex-col bg-gray-800/10 backdrop-blur-md rounded-lg border border-gray-200/20 shadow-xl mt-8">
       {/* Header with Device Selection and Action Buttons */}
       <div className="px-6 py-4 flex items-center justify-between relative border-b border-gray-200/20">
         {/* Back Button */}

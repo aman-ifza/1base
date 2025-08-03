@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import TemplateSettings from '../components/TemplateSettings';
 import TemplateComponent from '../components/TemplateComponent';
@@ -12,6 +13,7 @@ import template5 from '../Template Images/template5.png';
 import template6 from '../Template Images/template6.png';
 
 const Inspiration = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStyle, setSelectedStyle] = useState('All');
   const [selectedTheme, setSelectedTheme] = useState('All');
@@ -93,7 +95,7 @@ const Inspiration = () => {
 
   const handleViewTemplate = (templateId) => {
     console.log(`View template: ${templateId}`);
-    // Navigate to template preview or editor
+    navigate(`/inspiration/view/${templateId}`);
   };
 
   const handleExportTemplate = (templateId) => {
