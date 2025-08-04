@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { Monitor, Tablet, Smartphone } from 'lucide-react';
 
-const TemplatePreview = ({ templateImage = null }) => {
+const TemplatePreview = ({ 
+  templateImage = null, 
+  selectedName,
+  selectedLogo,
+  selectedTypography,
+  selectedColorScheme,
+  onBack,
+  onSave,
+  exportButtonText = "Use This Template"
+}) => {
   const [viewMode, setViewMode] = useState('desktop');
 
   const getViewportStyles = () => {
@@ -32,21 +41,31 @@ const TemplatePreview = ({ templateImage = null }) => {
   const templateContent = (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <div className="relative bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+      <div 
+        className="relative text-white"
+        style={{ 
+          background: selectedColorScheme 
+            ? `linear-gradient(to right, ${selectedColorScheme.primary}, ${selectedColorScheme.secondary})` 
+            : 'linear-gradient(to right, #7c3aed, #2563eb)'
+        }}
+      >
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className={`relative px-4 ${viewMode === 'mobile' ? 'py-8' : 'py-16'} text-center`}>
           <h1 className={`font-bold mb-4 ${viewMode === 'mobile' ? 'text-3xl' : 'text-5xl'}`}>
-            GROW YOUR COMPANY
+            {selectedName ? `GROW YOUR ${selectedName.toUpperCase()}` : 'GROW YOUR COMPANY'}
           </h1>
           <p className={`mb-2 ${viewMode === 'mobile' ? 'text-lg' : 'text-xl'}`}>with marketing</p>
           <p className={`mb-8 ${viewMode === 'mobile' ? 'text-lg' : 'text-xl'}`}>strategies that work</p>
           <p className="text-sm opacity-90">Benefit from our tried and tested approach</p>
-          <p className="text-xs mt-8 opacity-75">MGD Digital Co.</p>
+          <p className="text-xs mt-8 opacity-75">{selectedName || 'MGD Digital Co.'}</p>
         </div>
       </div>
 
       {/* Partnership Section */}
-      <div className={`bg-blue-500 text-white px-4 ${viewMode === 'mobile' ? 'py-8' : 'py-16'}`}>
+      <div 
+        className={`text-white px-4 ${viewMode === 'mobile' ? 'py-8' : 'py-16'}`}
+        style={{ backgroundColor: selectedColorScheme?.accent || '#3b82f6' }}
+      >
         <div className={`max-w-4xl mx-auto ${viewMode === 'mobile' ? 'block' : 'flex items-center gap-8'}`}>
           <div className={`bg-white rounded-lg overflow-hidden flex-shrink-0 ${
             viewMode === 'mobile' ? 'w-full h-48 mb-6' : 'w-48 h-64'
@@ -125,7 +144,7 @@ const TemplatePreview = ({ templateImage = null }) => {
       <div className="px-6 py-4 flex items-center justify-between relative border-b border-gray-200/20">
         {/* Back Button */}
         <button 
-          onClick={() => window.history.back()} 
+          onClick={onBack || (() => window.history.back())} 
           className="absolute left-6 top-5 flex items-center gap-2 text-gray-200 hover:text-white transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -178,8 +197,11 @@ const TemplatePreview = ({ templateImage = null }) => {
             <button className="px-4 py-2 text-gray-200 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
               Edit Template
             </button>
-            <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-lg">
-              Use This Template
+            <button 
+              onClick={onSave}
+              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-lg"
+            >
+              {exportButtonText}
             </button>
           </div>
         </div>
